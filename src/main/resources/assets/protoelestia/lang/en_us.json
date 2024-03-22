@@ -1,4 +1,6 @@
 {
   "item.protoelestia.mithril_ingot": "Mithril Ingot",
-  "item.protoelestia.raw_mithril": "Raw Mithril"
+  "item.protoelestia.raw_mithril": "Raw Mithril",
+  "block.protoelestia.mithril_pure_block": "Mithril (Pure) Block",
+  "block.protoelestia.mithril_impure_block": "Mithril (Impure) Block"
 }

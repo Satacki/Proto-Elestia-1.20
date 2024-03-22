@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.lykos.protoelestia.ProtoElestia;
+import net.lykos.protoelestia.block.ModBlocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
@@ -24,6 +25,8 @@ public class ModItems {
         private static void itemGroupOre(FabricItemGroupEntries entries) {
             entries.add(MITHRIL_INGOT);
             entries.add(MITHRIL_RAW);
+            entries.add(ModBlocks.MITHRIL_PURE_BLOCK);
+            entries.add(ModBlocks.MITHRIL_IMPURE_BLOCK);
         }
         public static void registerModItems() {
             ProtoElestia.LOGGER.info("Enregistre les items du mod" + ProtoElestia.MOD_ID);

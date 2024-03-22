@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "protoelestia:block/mithril_impure_block"
+  }
+}
