@@ -1,6 +1,7 @@
 {
   "replace": false,
   "value": [
-
+    "protoelestia:ether_ore",
+    "protoelestia:deepslate_ether_ore"
   ]
 }
