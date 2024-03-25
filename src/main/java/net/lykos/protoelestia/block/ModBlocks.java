@@ -21,6 +21,10 @@ public class ModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_GOLD_ORE)));
     public static final Block MITHRIL_ORE = registerBlock("mithril_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.GOLD_ORE)));
+    public static final Block ETHER_ORE = registerBlock("ether_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.OBSIDIAN)));
+    public static final Block DEEPSLATE_ETHER_ORE = registerBlock("deepslate_ether_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.OBSIDIAN)));
 
 
     private static Block registerBlock(String name, Block block) {

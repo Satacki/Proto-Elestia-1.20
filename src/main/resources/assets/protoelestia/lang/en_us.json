@@ -5,5 +5,7 @@
   "block.protoelestia.mithril_impure_block": "Mithril (Impure) Block",
   "block.protoelestia.mithril_deepslate_ore":  "Mithril Deepslate Ore",
   "block.protoelestia.mithril_ore":  "Mithril Ore",
+  "block.protoelestia.ether_ore": "Pure Mineral Etherium",
+  "block.protoelestia.deepslate_ether_ore": "Pure Mineral Deepslated Etherium",
   "itemgroup.elestia_ore": "Minerai de Abyss Magic"
 }
