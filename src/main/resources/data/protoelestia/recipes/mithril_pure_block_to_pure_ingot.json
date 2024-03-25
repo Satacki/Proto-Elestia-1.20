@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+     "item":  "protoelestia:mithril_pure_block"
+    }
+  ],
+  "result": {
+    "item": "protoelestia:mithril_ingot",
+    "count": 9
+  }
+}

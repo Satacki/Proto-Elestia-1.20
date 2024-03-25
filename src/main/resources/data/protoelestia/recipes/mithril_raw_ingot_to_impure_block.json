@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "protoelestia:raw_mithril"
+    }
+  },
+  "result": {
+    "item": "protoelestia:mithril_impure_block",
+    "count": 1
+  }
+}

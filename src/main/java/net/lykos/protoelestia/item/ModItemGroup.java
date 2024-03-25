@@ -19,6 +19,8 @@ public class ModItemGroup {
                         entries.add(ModItems.MITHRIL_INGOT);
                         entries.add(ModBlocks.MITHRIL_IMPURE_BLOCK);
                         entries.add(ModBlocks.MITHRIL_PURE_BLOCK);
+                        entries.add(ModBlocks.MITHRIL_DEEP_SLATE);
+                        entries.add(ModBlocks.MITHRIL_ORE);
 
                     }).build());
     public static void registerItemGroup() {

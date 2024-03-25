@@ -27,6 +27,8 @@ public class ModItems {
             entries.add(MITHRIL_RAW);
             entries.add(ModBlocks.MITHRIL_PURE_BLOCK);
             entries.add(ModBlocks.MITHRIL_IMPURE_BLOCK);
+            entries.add(ModBlocks.MITHRIL_DEEP_SLATE);
+            entries.add(ModBlocks.MITHRIL_ORE);
         }
         public static void registerModItems() {
             ProtoElestia.LOGGER.info("Enregistre les items du mod" + ProtoElestia.MOD_ID);

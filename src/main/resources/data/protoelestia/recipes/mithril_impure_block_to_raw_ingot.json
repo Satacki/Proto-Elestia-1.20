@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+     "item":  "protoelestia:mithril_impure_block"
+    }
+  ],
+  "result": {
+    "item": "protoelestia:raw_mithril",
+    "count": 9
+  }
+}

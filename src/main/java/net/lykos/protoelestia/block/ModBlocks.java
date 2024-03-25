@@ -17,6 +17,11 @@ public class ModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
     public static final Block MITHRIL_IMPURE_BLOCK = registerBlock("mithril_impure_block",
             new Block(FabricBlockSettings.copyOf(Blocks.RAW_IRON_BLOCK)));
+    public static final Block MITHRIL_DEEP_SLATE = registerBlock("mithril_deepslate_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_GOLD_ORE)));
+    public static final Block MITHRIL_ORE = registerBlock("mithril_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.GOLD_ORE)));
+
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

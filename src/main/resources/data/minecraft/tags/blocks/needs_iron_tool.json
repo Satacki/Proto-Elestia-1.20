@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "protoelestia:mithril_pure_block",
+    "protoelestia:mithril_impure_block",
+    "protoelestia:mithril_deepslate_ore",
+    "protoelestia:mithril_ore"
+  ]
+}
