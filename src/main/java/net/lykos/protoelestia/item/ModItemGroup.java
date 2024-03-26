@@ -17,6 +17,9 @@ public class ModItemGroup {
                     .icon(() -> new ItemStack(ModItems.MITHRIL_RAW)).entries((displayContext, entries) -> {
                         entries.add(ModItems.MITHRIL_RAW);
                         entries.add(ModItems.MITHRIL_INGOT);
+                        entries.add(ModItems.ETHER_SCANNER);
+
+
                         entries.add(ModBlocks.MITHRIL_IMPURE_BLOCK);
                         entries.add(ModBlocks.MITHRIL_PURE_BLOCK);
                         entries.add(ModBlocks.MITHRIL_DEEP_SLATE);
