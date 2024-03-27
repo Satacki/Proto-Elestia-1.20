@@ -17,31 +17,31 @@ public class EtherScannerItem extends Item{
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
-        if (!context.getWorld().isClient()) {
+        if (!context.getWorld().isClient() && context.getPlayer() != null) {
             BlockPos positionClicked = context.getBlockPos();
             PlayerEntity player = context.getPlayer();
             boolean foundBlock = false;
 
-            for (int x = positionClicked.getX() - 8; x < positionClicked.getX() + 8; x++) {
+            outerloop: for (int x = positionClicked.getX() - 8; x < positionClicked.getX() + 8; x++) {
                 for (int y = positionClicked.getY(); y > -64; y--) {
                     for (int z = positionClicked.getZ() - 8; x < positionClicked.getZ() + 8; x++) {
                         // use x, y, z here for the exact positions from the origin of the world
                         BlockPos posToCheck = new BlockPos(x, y, z);
-                        BlockState blockState = context.getWorld().getBlockState(posToCheck); // HERE!
+                        BlockState blockState = context.getWorld().getBlockState(posToCheck);
                         Block block = blockState.getBlock();
 
                         if (isEther(blockState)) {
                             outputEtherCoordinates(posToCheck, player, block);
 
                             foundBlock = true;
-                            break;
+                            break outerloop;
                         }
                     }
                 }
             }
 
 
-            if(!foundBlock){
+            if (!foundBlock){
                 player.sendMessage(Text.literal("No Ether Found in the 16x16 Area")); // No Bitches ?
             }
 
@@ -49,18 +49,16 @@ public class EtherScannerItem extends Item{
         }
 
         context.getStack().damage(1, context.getPlayer(),
-                playerEntity -> playerEntity.sendToolBreakStatus(playerEntity.getActiveHand()));
+                playerEntity -> playerEntity.sendToolBreakStatus(context.getHand()));
 
         return super.useOnBlock(context);
     }
 
     private void outputEtherCoordinates(BlockPos position, PlayerEntity player, Block block) {
-        player.sendMessage(Text.literal("Ether Found ! Transmitting Coordinates:" + block.getName().getString() + position.getX() + ", "
-                + position.getY() + ", " + position.getZ() + " )" ));
+        player.sendMessage(Text.literal(String.format("Ether Found! Transmitting Coordinates: %s at X: %s Y: %s Z: %s", block.getName().getString(), position.getX(), position.getY(), position.getZ())));
     }
 
     private boolean isEther(BlockState blockState) {
-        return blockState.getBlock() == ModBlocks.ETHER_ORE || blockState.getBlock() == ModBlocks.DEEPSLATE_ETHER_ORE;
-
+        return blockState.isOf(ModBlocks.ETHER_ORE) || blockState.isOf(ModBlocks.DEEPSLATE_ETHER_ORE);
     }
 }
