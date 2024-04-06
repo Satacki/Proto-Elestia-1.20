@@ -10,7 +10,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 
-public class EtherScannerItem extends Item{
+public class EtherScannerItem extends Item {
     public EtherScannerItem(Settings settings) {
         super(settings);
     }
@@ -22,10 +22,10 @@ public class EtherScannerItem extends Item{
             PlayerEntity player = context.getPlayer();
             boolean foundBlock = false;
 
-            outerloop: for (int x = positionClicked.getX() - 8; x < positionClicked.getX() + 8; x++) {
+            outerloop:
+            for (int x = positionClicked.getX() - 8; x < positionClicked.getX() + 8; x++) {
                 for (int y = positionClicked.getY(); y > -64; y--) {
-                    for (int z = positionClicked.getZ() - 8; x < positionClicked.getZ() + 8; x++) {
-                        // use x, y, z here for the exact positions from the origin of the world
+                    for (int z = positionClicked.getZ() - 8; z < positionClicked.getZ() + 8; z++) { // Fixed variable from x to z
                         BlockPos posToCheck = new BlockPos(x, y, z);
                         BlockState blockState = context.getWorld().getBlockState(posToCheck);
                         Block block = blockState.getBlock();
@@ -40,12 +40,9 @@ public class EtherScannerItem extends Item{
                 }
             }
 
-
-            if (!foundBlock){
-                player.sendMessage(Text.literal("No Ether Found in the 16x16 Area")); // No Bitches ?
+            if (!foundBlock) {
+                player.sendMessage(Text.of("No Ether Found in the 16x16 Area")); // No bitches ?
             }
-
-
         }
 
         context.getStack().damage(1, context.getPlayer(),
@@ -55,7 +52,7 @@ public class EtherScannerItem extends Item{
     }
 
     private void outputEtherCoordinates(BlockPos position, PlayerEntity player, Block block) {
-        player.sendMessage(Text.literal(String.format("Ether Found! Transmitting Coordinates: %s at X: %s Y: %s Z: %s", block.getName().getString(), position.getX(), position.getY(), position.getZ())));
+        player.sendMessage(Text.of(String.format("Ether Found! Transmitting Coordinates: %s at X: %s Y: %s Z: %s", block.getName().getString(), position.getX(), position.getY(), position.getZ()))); // Changed Text.literal to Text.of
     }
 
     private boolean isEther(BlockState blockState) {
