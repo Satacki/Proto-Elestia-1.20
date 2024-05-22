@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.lykos.protoelestia.block.ModBlocks;
 import net.lykos.protoelestia.item.ModItemGroup;
 import net.lykos.protoelestia.item.ModItems;
+import net.lykos.protoelestia.util.ModRegistries;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,5 +21,7 @@ public class ProtoElestia implements ModInitializer {
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+
+		ModRegistries.registerModStuffs();
 	}
 }

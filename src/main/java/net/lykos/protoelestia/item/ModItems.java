@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.lykos.protoelestia.ProtoElestia;
 import net.lykos.protoelestia.block.ModBlocks;
+import net.lykos.protoelestia.item.custom.CorruptedWardenHeart;
 import net.lykos.protoelestia.item.custom.EtherScannerItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -17,8 +18,12 @@ public class ModItems {
             new Item(new FabricItemSettings()));
     public static final Item MITHRIL_RAW = registerItem("raw_mithril",
             new Item(new FabricItemSettings()));
+    public static final Item ETHER = registerItem("ether",
+            new Item(new FabricItemSettings()));
     public static final Item ETHER_SCANNER = registerItem("ether_scanner",
             new EtherScannerItem(new FabricItemSettings().maxDamage(512)));
+    public static final Item CORRUPTED_WARDEN_HEART = registerItem("corrupted_warden_heart",
+            new CorruptedWardenHeart(new FabricItemSettings().maxDamage(512)));
 
 
         private static Item registerItem(String name, Item item) {
@@ -28,6 +33,8 @@ public class ModItems {
         private static void itemGroupOre(FabricItemGroupEntries entries) {
             entries.add(MITHRIL_INGOT);
             entries.add(MITHRIL_RAW);
+            entries.add(ETHER);
+
             entries.add(ModBlocks.MITHRIL_PURE_BLOCK);
             entries.add(ModBlocks.MITHRIL_IMPURE_BLOCK);
             entries.add(ModBlocks.MITHRIL_DEEP_SLATE);

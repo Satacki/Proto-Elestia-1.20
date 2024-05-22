@@ -1,14 +1,22 @@
 package net.lykos.protoelestia.item.custom;
 
 import net.lykos.protoelestia.block.ModBlocks;
+import net.lykos.protoelestia.util.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class EtherScannerItem extends Item {
     public EtherScannerItem(Settings settings) {
@@ -51,11 +59,20 @@ public class EtherScannerItem extends Item {
         return super.useOnBlock(context);
     }
 
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+       if(Screen.hasShiftDown()) {
+           tooltip.add(Text.translatable("item.protoelestia.ether_scanner.tooltip.shiftkey"));
+       } else {
+           tooltip.add(Text.translatable("item.protoelestia.ether_scanner.tooltip"));
+       }
+    }
+
     private void outputEtherCoordinates(BlockPos position, PlayerEntity player, Block block) {
         player.sendMessage(Text.of(String.format("Ether Found! Transmitting Coordinates: %s at X: %s Y: %s Z: %s", block.getName().getString(), position.getX(), position.getY(), position.getZ()))); // Changed Text.literal to Text.of
     }
 
     private boolean isEther(BlockState blockState) {
-        return blockState.isOf(ModBlocks.ETHER_ORE) || blockState.isOf(ModBlocks.DEEPSLATE_ETHER_ORE);
+        return blockState.isIn(ModTags.Blocks.ETHER_DETECTOR_ETHER_BLOCKS);
     }
 }

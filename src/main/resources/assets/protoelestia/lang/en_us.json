@@ -2,6 +2,8 @@
   "item.protoelestia.mithril_ingot": "Mithril Ingot",
   "item.protoelestia.raw_mithril": "Raw Mithril",
   "item.protoelestia.ether_scanner": "Ether Scanner",
+  "item.protoelestia.ether": "Etherium",
+  "item.protoelestia.corrupted_warden_heart": "Sculked/Corrupted Warden Heart",
 
   "block.protoelestia.mithril_pure_block": "Mithril (Pure) Block",
   "block.protoelestia.mithril_impure_block": "Mithril (Impure) Block",
@@ -9,7 +11,16 @@
   "block.protoelestia.mithril_ore":  "Mithril Ore",
   "block.protoelestia.ether_ore": "Pure Mineral Etherium",
   "block.protoelestia.deepslate_ether_ore": "Pure Mineral Deepslated Etherium",
+  "block.protoelestia.mithril_pure_stairs": "Pure Mithril Stairs",
+  "block.protoelestia.mithril_impure_stairs": "Impure Mithril Stairs",
+  "block.protoelestia.mithril_impure_slab": "Impure Mithril Slab",
+  "block.protoelestia.mithril_pure_slab": "Pure Mithril Stairs",
 
-  "itemgroup.elestia_ore": "Minerai de Abyss Magic"
+  "itemgroup.elestia_ore": "Minerai de Abyss Magic",
+
+  "item.protoelestia.ether_scanner.tooltip.shiftkey": "Used as a mean to scan for Ether Mineral in a 16x16 block radius. It only scan under you !.",
+  "item.protoelestia.ether_scanner.tooltip": "Right Click to use, 512 Usage. Press §eShift§r for more info",
+  "item.protoelestia.warden_heart_corrupted.tooltip.shiftkey": "§4Maybe you could make use of it... The Ether might be it ?",
+  "item.protoelestia.warden_heart_corrupted.tooltip": "§1A small beat can still be heard from the one guarding the gate..."
 
 }

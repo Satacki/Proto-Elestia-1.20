@@ -18,6 +18,8 @@ public class ModItemGroup {
                         entries.add(ModItems.MITHRIL_RAW);
                         entries.add(ModItems.MITHRIL_INGOT);
                         entries.add(ModItems.ETHER_SCANNER);
+                        entries.add(ModItems.CORRUPTED_WARDEN_HEART);
+                        entries.add(ModItems.ETHER);
 
 
                         entries.add(ModBlocks.MITHRIL_IMPURE_BLOCK);
@@ -26,6 +28,11 @@ public class ModItemGroup {
                         entries.add(ModBlocks.MITHRIL_ORE);
                         entries.add(ModBlocks.ETHER_ORE);
                         entries.add(ModBlocks.DEEPSLATE_ETHER_ORE);
+
+                        entries.add(ModBlocks.MITHRIL_IMPURE_STAIRS);
+                        entries.add(ModBlocks.MITHRIL_PURE_STAIRS);
+                        entries.add(ModBlocks.MITHRIL_PURE_SLAB);
+                        entries.add(ModBlocks.MITHRIL_IMPURE_SLAB);
 
 
                     }).build());

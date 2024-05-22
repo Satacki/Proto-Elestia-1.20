@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.lykos.protoelestia.ProtoElestia;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.SlabBlock;
+import net.minecraft.block.StairsBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -25,6 +27,21 @@ public class ModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.OBSIDIAN)));
     public static final Block DEEPSLATE_ETHER_ORE = registerBlock("deepslate_ether_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.OBSIDIAN)));
+
+
+
+    public static final Block MITHRIL_PURE_STAIRS = registerBlock("mithril_pure_stairs",
+            new StairsBlock(ModBlocks.MITHRIL_PURE_BLOCK.getDefaultState(), FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+    public static final Block MITHRIL_IMPURE_STAIRS = registerBlock("mithril_impure_stairs",
+            new StairsBlock(ModBlocks.MITHRIL_IMPURE_BLOCK.getDefaultState(), FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+
+
+
+
+    public static final Block MITHRIL_IMPURE_SLAB = registerBlock("mithril_impure_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+    public static final Block MITHRIL_PURE_SLAB = registerBlock("mithril_pure_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
 
 
     private static Block registerBlock(String name, Block block) {
