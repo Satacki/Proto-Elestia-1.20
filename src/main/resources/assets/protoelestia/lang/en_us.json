@@ -4,6 +4,7 @@
   "item.protoelestia.ether_scanner": "Ether Scanner",
   "item.protoelestia.ether": "Etherium",
   "item.protoelestia.corrupted_warden_heart": "Sculked/Corrupted Warden Heart",
+  "item.protoelestia.holy_cheese": "Le Saint Parmesan",
 
   "block.protoelestia.mithril_pure_block": "Mithril (Pure) Block",
   "block.protoelestia.mithril_impure_block": "Mithril (Impure) Block",
@@ -21,6 +22,7 @@
   "item.protoelestia.ether_scanner.tooltip.shiftkey": "Used as a mean to scan for Ether Mineral in a 16x16 block radius. It only scan under you !.",
   "item.protoelestia.ether_scanner.tooltip": "Right Click to use, 512 Usage. Press §eShift§r for more info",
   "item.protoelestia.warden_heart_corrupted.tooltip.shiftkey": "§4Maybe you could make use of it... The Ether might be it ?",
-  "item.protoelestia.warden_heart_corrupted.tooltip": "§1A small beat can still be heard from the one guarding the gate..."
-
+  "item.protoelestia.warden_heart_corrupted.tooltip": "§1A small beat can still be heard from the one guarding the gate...",
+  "item.protoelestia.holy_cheese.tooltip.shiftkey": "Un fromage d'exception créer à partir de l'ether le plus pure possible !",
+  "item.protoelestia.holy_cheese.tooltip": "§6§lCheese."
 }

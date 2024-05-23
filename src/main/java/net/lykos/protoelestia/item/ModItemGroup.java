@@ -20,6 +20,7 @@ public class ModItemGroup {
                         entries.add(ModItems.ETHER_SCANNER);
                         entries.add(ModItems.CORRUPTED_WARDEN_HEART);
                         entries.add(ModItems.ETHER);
+                        entries.add(ModItems.HOLY_CHEESE);
 
 
                         entries.add(ModBlocks.MITHRIL_IMPURE_BLOCK);

@@ -24,15 +24,15 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MITHRIL_RAW)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.HOLY_CHEESE)
                 .pattern("SSS")
                 .pattern("SPS")
                 .pattern("SSS")
-                .input('S', Items.STONE)
-                .input('P', ModItems.MITHRIL_INGOT)
-                .criterion(hasItem(Items.STONE), conditionsFromItem(Items.STONE))
-                .criterion(hasItem(ModItems.MITHRIL_INGOT), conditionsFromItem(ModItems.MITHRIL_INGOT))
-                .offerTo(exporter, convertBetween(ModItems.MITHRIL_RAW, ModItems.MITHRIL_INGOT));
+                .input('S', Items.MILK_BUCKET)
+                .input('P', ModItems.ETHER)
+                .criterion(hasItem(Items.MILK_BUCKET), conditionsFromItem(Items.MILK_BUCKET))
+                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
+                .offerTo(exporter, convertBetween(ModItems.HOLY_CHEESE, ModItems.ETHER));
 
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.MITHRIL_INGOT, RecipeCategory.MISC, ModBlocks.MITHRIL_PURE_BLOCK);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.MITHRIL_RAW, RecipeCategory.MISC, ModBlocks.MITHRIL_IMPURE_BLOCK);
