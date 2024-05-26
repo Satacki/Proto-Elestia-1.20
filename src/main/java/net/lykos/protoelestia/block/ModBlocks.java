@@ -3,10 +3,7 @@ package net.lykos.protoelestia.block;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.lykos.protoelestia.ProtoElestia;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.block.StairsBlock;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -35,13 +32,19 @@ public class ModBlocks {
     public static final Block MITHRIL_IMPURE_STAIRS = registerBlock("mithril_impure_stairs",
             new StairsBlock(ModBlocks.MITHRIL_IMPURE_BLOCK.getDefaultState(), FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
 
-
-
+    public static final Block MITHRIL_PURE_PRESSURE_PLATE = registerBlock("mithril_pure_pressure_plate",
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.STONE_PRESSURE_PLATE), BlockSetType.IRON));
+    public static final Block MITHRIL_PURE_BUTTON = registerBlock("mithril_pure_button",
+            new ButtonBlock(FabricBlockSettings.copyOf(Blocks.STONE_BUTTON), BlockSetType.IRON,40,true));
 
     public static final Block MITHRIL_IMPURE_SLAB = registerBlock("mithril_impure_slab",
             new SlabBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
     public static final Block MITHRIL_PURE_SLAB = registerBlock("mithril_pure_slab",
             new SlabBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+    public static final Block MITHRIL_PURE_WALL = registerBlock("mithril_pure_wall",
+            new WallBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+    public static final Block MITHRIL_IMPURE_WALL = registerBlock("mithril_impure_wall",
+            new WallBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
 
 
     private static Block registerBlock(String name, Block block) {

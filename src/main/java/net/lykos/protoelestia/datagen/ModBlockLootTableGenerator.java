@@ -19,7 +19,11 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.MITHRIL_DEEP_SLATE, oreDrops(ModBlocks.MITHRIL_DEEP_SLATE, ModItems.MITHRIL_RAW));
 
         addDrop(ModBlocks.MITHRIL_IMPURE_STAIRS);
+        addDrop(ModBlocks.MITHRIL_IMPURE_WALL);
+        addDrop(ModBlocks.MITHRIL_PURE_WALL);
         addDrop(ModBlocks.MITHRIL_PURE_STAIRS);
+        addDrop(ModBlocks.MITHRIL_PURE_BUTTON);
+        addDrop(ModBlocks.MITHRIL_PURE_PRESSURE_PLATE);
         addDrop(ModBlocks.MITHRIL_PURE_SLAB, slabDrops(ModBlocks.MITHRIL_PURE_SLAB));
         addDrop(ModBlocks.MITHRIL_IMPURE_SLAB, slabDrops(ModBlocks.MITHRIL_IMPURE_SLAB));
     }

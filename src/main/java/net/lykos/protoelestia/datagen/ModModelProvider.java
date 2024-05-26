@@ -24,8 +24,13 @@ public class ModModelProvider extends FabricModelProvider {
 
         mithrilTexturePool.stairs(ModBlocks.MITHRIL_PURE_STAIRS);
         mithrilTexturePool.slab(ModBlocks.MITHRIL_PURE_SLAB);
+        mithrilTexturePool.button(ModBlocks.MITHRIL_PURE_BUTTON);
+        mithrilTexturePool.pressurePlate(ModBlocks.MITHRIL_PURE_PRESSURE_PLATE);
+        mithrilTexturePool.wall(ModBlocks.MITHRIL_PURE_WALL);
+
         impure_mithrilTexturePool.stairs(ModBlocks.MITHRIL_IMPURE_STAIRS);
         impure_mithrilTexturePool.slab(ModBlocks.MITHRIL_IMPURE_SLAB);
+        impure_mithrilTexturePool.wall(ModBlocks.MITHRIL_IMPURE_WALL);
     }
 
     @Override

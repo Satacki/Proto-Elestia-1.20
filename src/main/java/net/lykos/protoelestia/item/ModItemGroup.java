@@ -35,6 +35,11 @@ public class ModItemGroup {
                         entries.add(ModBlocks.MITHRIL_PURE_SLAB);
                         entries.add(ModBlocks.MITHRIL_IMPURE_SLAB);
 
+                        entries.add(ModBlocks.MITHRIL_PURE_BUTTON);
+                        entries.add(ModBlocks.MITHRIL_PURE_PRESSURE_PLATE);
+                        entries.add(ModBlocks.MITHRIL_IMPURE_WALL);
+                        entries.add(ModBlocks.MITHRIL_PURE_WALL);
+
 
                     }).build());
     public static void registerItemGroup() {

@@ -16,10 +16,13 @@
   "block.protoelestia.mithril_impure_stairs": "Impure Mithril Stairs",
   "block.protoelestia.mithril_impure_slab": "Impure Mithril Slab",
   "block.protoelestia.mithril_pure_slab": "Pure Mithril Stairs",
+  "block.protoelestia.mithril_pure_button": "Mithril Button",
+  "block.protoelestia.mithril_pure_pressure_plate": "Mithril Pressure Plate", 
+
 
   "itemgroup.elestia_ore": "Minerai de Abyss Magic",
 
-  "item.protoelestia.ether_scanner.tooltip.shiftkey": "Used as a mean to scan for Ether Mineral in a 16x16 block radius. It only scan under you !.",
+  "item.protoelestia.ether_scanner.tooltip.shiftkey": "Used as a mean to scan for Ether Mineral in a 16x16 block radius. It only scan under you !",
   "item.protoelestia.ether_scanner.tooltip": "Right Click to use, 512 Usage. Press §eShift§r for more info",
   "item.protoelestia.warden_heart_corrupted.tooltip.shiftkey": "§4Maybe you could make use of it... The Ether might be it ?",
   "item.protoelestia.warden_heart_corrupted.tooltip": "§1A small beat can still be heard from the one guarding the gate...",

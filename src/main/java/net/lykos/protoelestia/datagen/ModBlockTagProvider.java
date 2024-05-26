@@ -26,17 +26,38 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.MITHRIL_IMPURE_BLOCK)
                 .add(ModBlocks.MITHRIL_PURE_BLOCK)
                 .add(ModBlocks.MITHRIL_ORE)
-                .add(ModBlocks.MITHRIL_DEEP_SLATE);
+                .add(ModBlocks.MITHRIL_DEEP_SLATE)
+                .add(ModBlocks.MITHRIL_PURE_BUTTON)
+                .add(ModBlocks.MITHRIL_PURE_PRESSURE_PLATE)
+                .add(ModBlocks.MITHRIL_IMPURE_SLAB)
+                .add(ModBlocks.MITHRIL_PURE_SLAB)
+                .add(ModBlocks.MITHRIL_IMPURE_STAIRS)
+                .add(ModBlocks.MITHRIL_PURE_WALL)
+                .add(ModBlocks.MITHRIL_IMPURE_WALL)
+                .add(ModBlocks.MITHRIL_PURE_STAIRS);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.ETHER_ORE)
                 .add(ModBlocks.DEEPSLATE_ETHER_ORE);
 
+
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.MITHRIL_IMPURE_BLOCK)
                 .add(ModBlocks.MITHRIL_PURE_BLOCK)
                 .add(ModBlocks.MITHRIL_ORE)
-                .add(ModBlocks.MITHRIL_DEEP_SLATE);
+                .add(ModBlocks.MITHRIL_DEEP_SLATE)
+                .add(ModBlocks.MITHRIL_PURE_BUTTON)
+                .add(ModBlocks.MITHRIL_PURE_PRESSURE_PLATE)
+                .add(ModBlocks.MITHRIL_IMPURE_SLAB)
+                .add(ModBlocks.MITHRIL_PURE_SLAB)
+                .add(ModBlocks.MITHRIL_PURE_WALL)
+                .add(ModBlocks.MITHRIL_IMPURE_WALL)
+                .add(ModBlocks.MITHRIL_IMPURE_STAIRS)
+                .add(ModBlocks.MITHRIL_PURE_STAIRS);
+
+        getOrCreateTagBuilder(BlockTags.WALLS)
+                .add(ModBlocks.MITHRIL_PURE_WALL)
+                .add(ModBlocks.MITHRIL_IMPURE_WALL);
 
     }
 }
