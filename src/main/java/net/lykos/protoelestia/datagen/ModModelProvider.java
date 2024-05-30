@@ -40,7 +40,13 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MITHRIL_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.ETHER, Models.GENERATED);
         itemModelGenerator.register(ModItems.CORRUPTED_WARDEN_HEART, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PURIFIED_WARDEN_HEART, Models.GENERATED);
         itemModelGenerator.register(ModItems.HOLY_CHEESE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.VEX_CORE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ALLEY_CORE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.THE_KEY, Models.GENERATED);
+        itemModelGenerator.register(ModItems.VEX_SOUL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ALLEY_SOUL, Models.GENERATED);
 
     }
 }

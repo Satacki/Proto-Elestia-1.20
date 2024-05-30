@@ -5,9 +5,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.lykos.protoelestia.ProtoElestia;
 import net.lykos.protoelestia.block.ModBlocks;
-import net.lykos.protoelestia.item.custom.CorruptedWardenHeart;
-import net.lykos.protoelestia.item.custom.EtherScannerItem;
-import net.lykos.protoelestia.item.custom.HolyCheese;
+import net.lykos.protoelestia.item.custom.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
@@ -22,12 +20,24 @@ public class ModItems {
             new Item(new FabricItemSettings()));
     public static final Item ETHER = registerItem("ether",
             new Item(new FabricItemSettings()));
+    public static final Item VEX_SOUL = registerItem("vex_soul",
+            new Item(new FabricItemSettings().rarity(Rarity.RARE)));
+    public static final Item VEX_CORE = registerItem("vex_core",
+            new Item(new FabricItemSettings().rarity(Rarity.RARE).recipeRemainder(VEX_SOUL).maxCount(1)));
+    public static final Item ALLEY_SOUL = registerItem("alley_soul",
+            new Item(new FabricItemSettings().rarity(Rarity.RARE)));
+    public static final Item ALLEY_CORE = registerItem("alley_core",
+            new Item(new FabricItemSettings().rarity(Rarity.RARE).recipeRemainder(ALLEY_SOUL).maxCount(1)));
     public static final Item ETHER_SCANNER = registerItem("ether_scanner",
             new EtherScannerItem(new FabricItemSettings().maxDamage(512)));
     public static final Item CORRUPTED_WARDEN_HEART = registerItem("corrupted_warden_heart",
-            new CorruptedWardenHeart(new FabricItemSettings()));
+            new CorruptedWardenHeart(new FabricItemSettings().rarity(Rarity.UNCOMMON)));
+    public static final Item PURIFIED_WARDEN_HEART = registerItem("purified_warden_heart",
+            new PurifiedWardenHeart(new FabricItemSettings().rarity(Rarity.UNCOMMON)));
     public static final Item HOLY_CHEESE = registerItem("holy_cheese",
             new HolyCheese(new FabricItemSettings().food(ModFoodComponent.HOLY_CHEESE).rarity(Rarity.EPIC)));
+    public static final Item THE_KEY = registerItem("the_key",
+            new TheKey(new FabricItemSettings().rarity(Rarity.EPIC)));
 
 
         private static Item registerItem(String name, Item item) {

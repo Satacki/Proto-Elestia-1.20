@@ -5,6 +5,12 @@
   "item.protoelestia.ether": "Etherium",
   "item.protoelestia.corrupted_warden_heart": "Sculked/Corrupted Warden Heart",
   "item.protoelestia.holy_cheese": "Le Saint Parmesan",
+  "item.protoelestia.purified_warden_heart": "Purified Warden Heart",
+  "item.protoelestia.vex_core": "Vex Core",
+  "item.protoelestia.alley_core": "Alley Core",
+  "item.protoelestia.the_key": "The Key...",
+  "item.protoelestia.alley_soul": "Alley Soul",
+  "item.protoelestia.vex_soul": "Vex Soul",
 
   "block.protoelestia.mithril_pure_block": "Mithril (Pure) Block",
   "block.protoelestia.mithril_impure_block": "Mithril (Impure) Block",
@@ -27,5 +33,11 @@
   "item.protoelestia.warden_heart_corrupted.tooltip.shiftkey": "§4Maybe you could make use of it... The Ether might be it ?",
   "item.protoelestia.warden_heart_corrupted.tooltip": "§1A small beat can still be heard from the one guarding the gate...",
   "item.protoelestia.holy_cheese.tooltip.shiftkey": "Un fromage d'exception créer à partir de l'ether le plus pure possible !",
-  "item.protoelestia.holy_cheese.tooltip": "§6§lCheese."
+  "item.protoelestia.holy_cheese.tooltip": "§6§lCheese",
+  "item.protoelestia.warden_heart_purified.tooltip.shiftkey": "The first step to the key... The Key to go home... Where it all began...",
+  "item.protoelestia.warden_heart_purified.tooltip": "A sense of safety emanate from this heart... Ah a sense of home...",
+  "item.protoelestia.the_key.tooltip.shiftkey": "The key has been made... Now go home.. ",
+  "item.protoelestia.the_key.tooltip.shiftkey2": "where the ancient civilisation started... Where the warden once belong...",
+  "item.protoelestia.the_key.tooltip": "As you touch it the eye of the key open changing.",
+  "item.protoelestia.the_key.tooltip2": "color as it blinks... No more corruption only §b§lPurity.."
 }

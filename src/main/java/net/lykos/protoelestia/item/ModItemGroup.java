@@ -19,8 +19,14 @@ public class ModItemGroup {
                         entries.add(ModItems.MITHRIL_INGOT);
                         entries.add(ModItems.ETHER_SCANNER);
                         entries.add(ModItems.CORRUPTED_WARDEN_HEART);
+                        entries.add(ModItems.PURIFIED_WARDEN_HEART);
                         entries.add(ModItems.ETHER);
+                        entries.add(ModItems.VEX_CORE);
+                        entries.add(ModItems.ALLEY_CORE);
                         entries.add(ModItems.HOLY_CHEESE);
+                        entries.add(ModItems.THE_KEY);
+                        entries.add(ModItems.ALLEY_SOUL);
+                        entries.add(ModItems.VEX_SOUL);
 
 
                         entries.add(ModBlocks.MITHRIL_IMPURE_BLOCK);

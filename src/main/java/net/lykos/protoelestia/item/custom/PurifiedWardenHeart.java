@@ -14,13 +14,13 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class CorruptedWardenHeart extends Item {
-    public CorruptedWardenHeart(Settings settings) {
+public class PurifiedWardenHeart extends Item {
+    public PurifiedWardenHeart(Settings settings) {
         super(settings);
     }
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity playerEntity, Hand hand) {
-        playerEntity.playSound(SoundEvents.ENTITY_WARDEN_HEARTBEAT, 3.0F, 1.0F);
+        playerEntity.playSound(SoundEvents.ENTITY_ALLAY_AMBIENT_WITH_ITEM, 3.0F, 1.0F);
         return TypedActionResult.fail(playerEntity.getStackInHand(hand));
     }
     @Override
@@ -31,9 +31,9 @@ public class CorruptedWardenHeart extends Item {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if(Screen.hasShiftDown()) {
-            tooltip.add(Text.translatable("item.protoelestia.warden_heart_corrupted.tooltip.shiftkey"));
+            tooltip.add(Text.translatable("item.protoelestia.warden_heart_purified.tooltip.shiftkey"));
         } else {
-            tooltip.add(Text.translatable("item.protoelestia.warden_heart_corrupted.tooltip"));
+            tooltip.add(Text.translatable("item.protoelestia.warden_heart_purified.tooltip"));
         }
     }
 
