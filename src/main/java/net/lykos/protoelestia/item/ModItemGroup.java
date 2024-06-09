@@ -27,6 +27,39 @@ public class ModItemGroup {
                         entries.add(ModItems.THE_KEY);
                         entries.add(ModItems.ALLEY_SOUL);
                         entries.add(ModItems.VEX_SOUL);
+                        entries.add(ModItems.ETHER_TRIM_UPGRADE);
+
+
+                        entries.add(ModItems.CHESIUM_AXE);
+                        entries.add(ModItems.CHESIUM_HOE);
+                        entries.add(ModItems.CHESIUM_SHOVEL);
+                        entries.add(ModItems.CHESIUM_PICKAXE);
+                        entries.add(ModItems.CHESIUM_SWORD);
+
+
+
+                        entries.add(ModItems.ETHER_AXE);
+                        entries.add(ModItems.ETHER_HOE);
+                        entries.add(ModItems.ETHER_PICKAXE);
+                        entries.add(ModItems.ETHER_SHOVEL);
+                        entries.add(ModItems.ETHER_SWORD);
+
+                        entries.add(ModItems.NETHERITE_ETHER_UPGRADED_HELMET);
+                        entries.add(ModItems.NETHERITE_ETHER_UPGRADED_CHESTPLATE);
+                        entries.add(ModItems.NETHERITE_ETHER_UPGRADED_LEGGINGS);
+                        entries.add(ModItems.NETHERITE_ETHER_UPGRADED_BOOTS);
+
+
+
+
+
+
+
+                        entries.add(ModItems.MITHRIL_AXE);
+                        entries.add(ModItems.MITHRIL_HOE);
+                        entries.add(ModItems.MITHRIL_SHOVEL);
+                        entries.add(ModItems.MITHRIL_PICKAXE);
+                        entries.add(ModItems.MITHRIL_SWORD);
 
 
                         entries.add(ModBlocks.MITHRIL_IMPURE_BLOCK);

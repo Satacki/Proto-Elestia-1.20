@@ -14,5 +14,6 @@ public class ProtoElestiaDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModBlockLootTableGenerator::new);
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModRecipeGenerator::new);
+		pack.addProvider(ModAdvancementProvider::new);
 	}
 }

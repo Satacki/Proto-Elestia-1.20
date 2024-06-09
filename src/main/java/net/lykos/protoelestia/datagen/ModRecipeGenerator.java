@@ -2,15 +2,19 @@ package net.lykos.protoelestia.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.lykos.protoelestia.ProtoElestia;
 import net.lykos.protoelestia.block.ModBlocks;
 import net.lykos.protoelestia.item.ModItems;
 import net.minecraft.data.server.recipe.CookingRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.SmithingTransformRecipeJsonBuilder;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.SmithingTransformRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.util.Identifier;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -31,6 +35,18 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.MILK_BUCKET), conditionsFromItem(Items.MILK_BUCKET))
                 .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
                 .offerTo(exporter, convertBetween(ModItems.HOLY_CHEESE, ModItems.ETHER));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.ETHER_TRIM_UPGRADE)
+                .pattern("SNS")
+                .pattern("SPS")
+                .pattern("SSS")
+                .input('S', ModBlocks.MITHRIL_PURE_BLOCK)
+                .input('N', Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
+                .input('P', ModItems.ETHER)
+                .criterion(hasItem(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), conditionsFromItem(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
+                .criterion(hasItem(ModBlocks.MITHRIL_PURE_BLOCK), conditionsFromItem(ModBlocks.MITHRIL_PURE_BLOCK))
+                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
+                .offerTo(exporter, convertBetween(ModItems.ETHER, ModItems.ETHER_TRIM_UPGRADE));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PURIFIED_WARDEN_HEART)
                 .pattern("CEC")
@@ -74,9 +90,6 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.WITHER_ROSE), conditionsFromItem(Items.WITHER_ROSE))
                 .offerTo(exporter, convertBetween(ModItems.THE_KEY, ModItems.ETHER));
 
-
-
-
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.MITHRIL_INGOT, RecipeCategory.MISC, ModBlocks.MITHRIL_PURE_BLOCK);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.MITHRIL_RAW, RecipeCategory.MISC, ModBlocks.MITHRIL_IMPURE_BLOCK);
 
@@ -98,6 +111,112 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
 
         offerPressurePlateRecipe(exporter, ModBlocks.MITHRIL_PURE_PRESSURE_PLATE, ModItems.MITHRIL_INGOT);
         offerSingleOutputShapelessRecipe(exporter, ModBlocks.MITHRIL_PURE_BUTTON, ModItems.MITHRIL_INGOT, "mithril_button");
-        
+        offerWallRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, ModBlocks.MITHRIL_PURE_WALL, ModBlocks.MITHRIL_PURE_BLOCK);
+
+
+        //A changer
+        SmithingTransformRecipeJsonBuilder.create(
+                Ingredient.ofItems(ModItems.HOLY_CHEESE),
+                Ingredient.ofItems(Items.NETHERITE_INGOT),
+                Ingredient.ofItems(ModItems.MITHRIL_INGOT),
+                RecipeCategory.MISC, ModItems.ETHER)
+                .criterion(hasItem(ModItems.HOLY_CHEESE), conditionsFromItem(ModItems.HOLY_CHEESE))
+                .criterion(hasItem(Items.NETHERITE_INGOT), conditionsFromItem(Items.NETHERITE_INGOT))
+                .criterion(hasItem(ModItems.MITHRIL_INGOT), conditionsFromItem(ModItems.MITHRIL_INGOT))
+                .offerTo(exporter, new Identifier(ProtoElestia.MOD_ID, "ether_lost_craft"));
+
+
+
+        SmithingTransformRecipeJsonBuilder.create(
+                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.ofItems(Items.NETHERITE_HELMET),
+                        Ingredient.ofItems(ModItems.ETHER),
+                        RecipeCategory.MISC, ModItems.NETHERITE_ETHER_UPGRADED_HELMET)
+                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
+                .criterion(hasItem(Items.NETHERITE_HELMET), conditionsFromItem(Items.NETHERITE_HELMET))
+                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
+                .offerTo(exporter, new Identifier(ProtoElestia.MOD_ID, "ether_helmet"));
+
+                SmithingTransformRecipeJsonBuilder.create(
+                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.ofItems(Items.NETHERITE_CHESTPLATE),
+                        Ingredient.ofItems(ModItems.ETHER),
+                        RecipeCategory.MISC, ModItems.NETHERITE_ETHER_UPGRADED_CHESTPLATE)
+                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
+                .criterion(hasItem(Items.NETHERITE_CHESTPLATE), conditionsFromItem(Items.NETHERITE_CHESTPLATE))
+                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
+                .offerTo(exporter, new Identifier(ProtoElestia.MOD_ID, "ether_chestplate"));
+
+                SmithingTransformRecipeJsonBuilder.create(
+                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.ofItems(Items.NETHERITE_LEGGINGS),
+                        Ingredient.ofItems(ModItems.ETHER),
+                        RecipeCategory.MISC, ModItems.NETHERITE_ETHER_UPGRADED_LEGGINGS)
+                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
+                .criterion(hasItem(Items.NETHERITE_LEGGINGS), conditionsFromItem(Items.NETHERITE_LEGGINGS))
+                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
+                .offerTo(exporter, new Identifier(ProtoElestia.MOD_ID, "ether_leggings"));
+
+                SmithingTransformRecipeJsonBuilder.create(
+                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.ofItems(Items.NETHERITE_BOOTS),
+                        Ingredient.ofItems(ModItems.ETHER),
+                        RecipeCategory.MISC, ModItems.NETHERITE_ETHER_UPGRADED_BOOTS)
+                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
+                .criterion(hasItem(Items.NETHERITE_BOOTS), conditionsFromItem(Items.NETHERITE_BOOTS))
+                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
+                .offerTo(exporter, new Identifier(ProtoElestia.MOD_ID, "ether_boots"));
+
+                SmithingTransformRecipeJsonBuilder.create(
+                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.ofItems(Items.NETHERITE_PICKAXE),
+                        Ingredient.ofItems(ModItems.ETHER),
+                        RecipeCategory.MISC, ModItems.ETHER_PICKAXE)
+                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
+                .criterion(hasItem(Items.NETHERITE_PICKAXE), conditionsFromItem(Items.NETHERITE_PICKAXE))
+                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
+                .offerTo(exporter, new Identifier(ProtoElestia.MOD_ID, "ether_pickaxe"));
+
+                SmithingTransformRecipeJsonBuilder.create(
+                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.ofItems(Items.NETHERITE_AXE),
+                        Ingredient.ofItems(ModItems.ETHER),
+                        RecipeCategory.MISC, ModItems.ETHER_AXE)
+                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
+                .criterion(hasItem(Items.NETHERITE_AXE), conditionsFromItem(Items.NETHERITE_AXE))
+                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
+                .offerTo(exporter, new Identifier(ProtoElestia.MOD_ID, "ether_axe"));
+
+                SmithingTransformRecipeJsonBuilder.create(
+                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.ofItems(Items.NETHERITE_HOE),
+                        Ingredient.ofItems(ModItems.ETHER),
+                        RecipeCategory.MISC, ModItems.ETHER_HOE)
+                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
+                .criterion(hasItem(Items.NETHERITE_HOE), conditionsFromItem(Items.NETHERITE_HOE))
+                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
+                .offerTo(exporter, new Identifier(ProtoElestia.MOD_ID, "ether_hoe"));
+
+                SmithingTransformRecipeJsonBuilder.create(
+                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.ofItems(Items.NETHERITE_SHOVEL),
+                        Ingredient.ofItems(ModItems.ETHER),
+                        RecipeCategory.MISC, ModItems.ETHER_SHOVEL)
+                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
+                .criterion(hasItem(Items.NETHERITE_SHOVEL), conditionsFromItem(Items.NETHERITE_SHOVEL))
+                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
+                .offerTo(exporter, new Identifier(ProtoElestia.MOD_ID, "ether_shovel"));
+
+                SmithingTransformRecipeJsonBuilder.create(
+                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.ofItems(Items.NETHERITE_SWORD),
+                        Ingredient.ofItems(ModItems.ETHER),
+                        RecipeCategory.MISC, ModItems.ETHER_SWORD)
+                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
+                .criterion(hasItem(Items.NETHERITE_SWORD), conditionsFromItem(Items.NETHERITE_SWORD))
+                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
+                .offerTo(exporter, new Identifier(ProtoElestia.MOD_ID, "ether_sword"));
+
+
     }
 }

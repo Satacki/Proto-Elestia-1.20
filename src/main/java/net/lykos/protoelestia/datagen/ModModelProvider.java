@@ -44,9 +44,44 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.HOLY_CHEESE, Models.GENERATED);
         itemModelGenerator.register(ModItems.VEX_CORE, Models.GENERATED);
         itemModelGenerator.register(ModItems.ALLEY_CORE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.THE_KEY, Models.GENERATED);
         itemModelGenerator.register(ModItems.VEX_SOUL, Models.GENERATED);
         itemModelGenerator.register(ModItems.ALLEY_SOUL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ETHER_TRIM_UPGRADE, Models.GENERATED);
+
+        itemModelGenerator.register(ModItems.THE_KEY, Models.HANDHELD_ROD);
+
+        itemModelGenerator.register(ModItems.CHESIUM_AXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.CHESIUM_PICKAXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.CHESIUM_SHOVEL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.CHESIUM_SWORD, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.CHESIUM_HOE, Models.HANDHELD);
+
+
+
+        itemModelGenerator.register(ModItems.ETHER_AXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.ETHER_PICKAXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.ETHER_HOE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.ETHER_SHOVEL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.ETHER_SWORD, Models.HANDHELD);
+
+
+        itemModelGenerator.register(ModItems.NETHERITE_ETHER_UPGRADED_HELMET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.NETHERITE_ETHER_UPGRADED_CHESTPLATE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.NETHERITE_ETHER_UPGRADED_LEGGINGS, Models.GENERATED);
+        itemModelGenerator.register(ModItems.NETHERITE_ETHER_UPGRADED_BOOTS, Models.GENERATED);
+
+
+
+
+
+
+
+        itemModelGenerator.register(ModItems.MITHRIL_AXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.MITHRIL_PICKAXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.MITHRIL_SHOVEL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.MITHRIL_SWORD, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.MITHRIL_HOE, Models.HANDHELD);
+
 
     }
 }
