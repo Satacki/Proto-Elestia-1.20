@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "protogmt:alley_soul"
+    },
+    "D": {
+      "item": "minecraft:dragon_egg"
+    },
+    "E": {
+      "item": "protogmt:ether"
+    },
+    "H": {
+      "item": "protogmt:purified_warden_heart"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "R": {
+      "item": "minecraft:wither_rose"
+    },
+    "S": {
+      "item": "minecraft:echo_shard"
+    },
+    "V": {
+      "item": "protogmt:vex_soul"
+    },
+    "Y": {
+      "item": "minecraft:ender_eye"
+    }
+  },
+  "pattern": [
+    "VEA",
+    "HDN",
+    "SYR"
+  ],
+  "result": {
+    "item": "protogmt:the_key"
+  },
+  "show_notification": true
+}

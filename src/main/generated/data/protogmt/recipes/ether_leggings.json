@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "protogmt:ether"
+  },
+  "base": {
+    "item": "minecraft:netherite_leggings"
+  },
+  "result": {
+    "item": "protogmt:netherite_ether_upgraded_leggings"
+  },
+  "template": {
+    "item": "protogmt:ether_upgrade_trim"
+  }
+}

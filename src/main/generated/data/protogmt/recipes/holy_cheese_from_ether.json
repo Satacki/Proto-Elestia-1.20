@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "protogmt:ether"
+    },
+    "S": {
+      "item": "minecraft:milk_bucket"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SPS",
+    "SSS"
+  ],
+  "result": {
+    "item": "protogmt:holy_cheese"
+  },
+  "show_notification": true
+}

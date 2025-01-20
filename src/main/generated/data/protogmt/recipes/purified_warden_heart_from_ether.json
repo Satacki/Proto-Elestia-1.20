@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "protogmt:alley_core"
+    },
+    "C": {
+      "item": "protogmt:holy_cheese"
+    },
+    "E": {
+      "item": "protogmt:ether"
+    },
+    "H": {
+      "item": "protogmt:corrupted_warden_heart"
+    },
+    "M": {
+      "item": "protogmt:mithril_pure_block"
+    },
+    "V": {
+      "item": "protogmt:vex_core"
+    }
+  },
+  "pattern": [
+    "CEC",
+    "VHA",
+    "MMM"
+  ],
+  "result": {
+    "item": "protogmt:purified_warden_heart"
+  },
+  "show_notification": true
+}

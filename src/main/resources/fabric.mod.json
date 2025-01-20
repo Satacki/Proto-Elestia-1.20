@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "protoelestia",
 	"version": "${version}",
-	"name": "Proto Elestia",
+	"name": "Proto GMT",
 	"description": "First Step into the Abyss",
 	"authors": [
 		"Lykos"
@@ -12,25 +12,25 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "MIT",
-	"icon": "assets/protoelestia/icon.png",
+	"icon": "assets/protogmt/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.lykos.protoelestia.ProtoElestia"
+			"net.lykos.protogmt.ProtoGMT"
 		],
 		"fabric-datagen": [
-			"net.lykos.protoelestia.ProtoElestiaDataGenerator"
+			"net.lykos.protogmt.ProtoGMTDataGenerator"
 		],
 		"client": [
-			"net.lykos.protoelestia.ProtoElestiaModClient"
+			"net.lykos.protogmt.ProtoGMTModClient"
 		]
 	},
 	"mixins": [
-		"protoelestia.mixins.json"
+      "protogmt.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.15.7",
-		"minecraft": "~1.20",
+		"minecraft": "~1.20.1",
 		"java": ">=17",
 		"fabric-api": "*"
 	},
