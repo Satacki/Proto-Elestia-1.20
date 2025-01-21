@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "protogmt:mithril_pure_wall",
+    "protogmt:mithril_impure_wall"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "parent": "protogmt:protogmt",
+  "criteria": {
+    "has_mithril_ingot": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:allay"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "protogmt:textures/block/mithril_pure_block.png",
+    "description": {
+      "text": "You have killed an Allay, Congratulation now pray for your sins."
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "protogmt:alley_soul"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "You monster !"
+    }
+  },
+  "requirements": [
+    [
+      "has_mithril_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

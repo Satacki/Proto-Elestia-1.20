@@ -1,0 +1,40 @@
+{
+  "parent": "protogmt:protogmt",
+  "criteria": {
+    "has_mithril_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:mithril_hoe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "protogmt:textures/block/mithril_pure_block.png",
+    "description": {
+      "text": "Ok i get it but please don't go further than that with a hoe it is not worth it... -Your Narrator Bacharu"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "item": "protogmt:mithril_hoe",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Eh... Ok i guess ?"
+    }
+  },
+  "requirements": [
+    [
+      "has_mithril_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

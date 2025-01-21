@@ -3,16 +3,11 @@ package net.lykos.protogmt.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.lykos.protogmt.ProtoGMT;
-import net.lykos.protogmt.block.ModBlocks;
-import assets.protogmt.models.block.item.ModItems;
-import net.minecraft.data.server.recipe.CookingRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
-import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.SmithingTransformRecipeJsonBuilder;
-import net.minecraft.item.Items;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.util.Identifier;
+import net.lykos.protogmt.registry.ModBlocks;
+import net.lykos.protogmt.registry.ModItems;
+import net.minecraft.data.recipes.*;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.function.Consumer;
 
@@ -22,263 +17,338 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
     }
 
     @Override
-    public void generate(Consumer<RecipeJsonProvider> exporter) {
-        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.HOLY_CHEESE)
+    public void buildRecipes(Consumer<FinishedRecipe> exporter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItems.HOLY_CHEESE)
                 .pattern("SSS")
                 .pattern("SPS")
                 .pattern("SSS")
-                .input('S', ModBlocks.MITHRIL_PURE_BLOCK)
-                .input('P', Items.MILK_BUCKET)
-                .criterion(hasItem(Items.MILK_BUCKET), conditionsFromItem(Items.MILK_BUCKET))
-                .criterion(hasItem(ModBlocks.MITHRIL_PURE_BLOCK), conditionsFromItem(ModBlocks.MITHRIL_IMPURE_BLOCK))
-                .offerTo(exporter, convertBetween(ModItems.HOLY_CHEESE, ModBlocks.MITHRIL_PURE_BLOCK));
+                .define('S', ModBlocks.MITHRIL_PURE_BLOCK)
+                .define('P', Items.MILK_BUCKET)
+                .unlockedBy(getHasName(Items.MILK_BUCKET), has(Items.MILK_BUCKET))
+                .unlockedBy(getHasName(ModBlocks.MITHRIL_PURE_BLOCK), has(ModBlocks.MITHRIL_IMPURE_BLOCK))
+                .save(exporter, getConversionRecipeName(ModItems.HOLY_CHEESE, ModBlocks.MITHRIL_PURE_BLOCK));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.ETHER_TRIM_UPGRADE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ETHER_TRIM_UPGRADE)
                 .pattern("QNQ")
                 .pattern("QPQ")
                 .pattern("QQQ")
-                .input('Q', Items.QUARTZ)
-                .input('N', ModItems.MITHRIL_TOOL_UPGRADE)
-                .input('P', ModItems.ETHER)
-                .criterion(hasItem(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), conditionsFromItem(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
-                .criterion(hasItem(ModBlocks.MITHRIL_PURE_BLOCK), conditionsFromItem(ModBlocks.MITHRIL_PURE_BLOCK))
-                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
-                .offerTo(exporter, convertBetween(ModItems.ETHER, ModItems.ETHER_TRIM_UPGRADE));
+                .define('Q', Items.QUARTZ)
+                .define('N', ModItems.MITHRIL_TOOL_UPGRADE)
+                .define('P', ModItems.ETHER)
+                .unlockedBy(
+                        getHasName(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                        has(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
+                )
+                .unlockedBy(getHasName(ModBlocks.MITHRIL_PURE_BLOCK), has(ModBlocks.MITHRIL_PURE_BLOCK))
+                .unlockedBy(getHasName(ModItems.ETHER), has(ModItems.ETHER))
+                .save(exporter, getConversionRecipeName(ModItems.ETHER, ModItems.ETHER_TRIM_UPGRADE));
 
-                ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MITHRIL_TOOL_UPGRADE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MITHRIL_TOOL_UPGRADE)
                 .pattern("SUS")
                 .pattern("SPS")
                 .pattern("PPP")
-                .input('S', ModBlocks.MITHRIL_IMPURE_BLOCK)
-                .input('U', Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
-                .input('P', ModBlocks.MITHRIL_PURE_BLOCK)
-                .criterion(hasItem(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), conditionsFromItem(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
-                .criterion(hasItem(ModBlocks.MITHRIL_IMPURE_BLOCK), conditionsFromItem(ModBlocks.MITHRIL_IMPURE_BLOCK))
-                .criterion(hasItem(ModBlocks.MITHRIL_PURE_BLOCK), conditionsFromItem(ModBlocks.MITHRIL_PURE_BLOCK))
-                .offerTo(exporter, convertBetween(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItems.MITHRIL_TOOL_UPGRADE));
+                .define('S', ModBlocks.MITHRIL_IMPURE_BLOCK)
+                .define('U', Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
+                .define('P', ModBlocks.MITHRIL_PURE_BLOCK)
+                .unlockedBy(
+                        getHasName(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                        has(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
+                )
+                .unlockedBy(getHasName(ModBlocks.MITHRIL_IMPURE_BLOCK), has(ModBlocks.MITHRIL_IMPURE_BLOCK))
+                .unlockedBy(getHasName(ModBlocks.MITHRIL_PURE_BLOCK), has(ModBlocks.MITHRIL_PURE_BLOCK))
+                .save(
+                        exporter,
+                        getConversionRecipeName(
+                                Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE,
+                                ModItems.MITHRIL_TOOL_UPGRADE
+                        )
+                );
 
 
-
-
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PURIFIED_WARDEN_HEART)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PURIFIED_WARDEN_HEART)
                 .pattern("CEC")
                 .pattern("VHA")
                 .pattern("MMM")
-                .input('C', ModItems.HOLY_CHEESE)
-                .input('E', ModItems.ETHER)
-                .input('V', ModItems.VEX_CORE)
-                .input('H', ModItems.CORRUPTED_WARDEN_HEART)
-                .input('A', ModItems.ALLEY_CORE)
-                .input('M', ModBlocks.MITHRIL_PURE_BLOCK)
-                .criterion(hasItem(ModItems.HOLY_CHEESE), conditionsFromItem(ModItems.HOLY_CHEESE))
-                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
-                .criterion(hasItem(ModItems.CORRUPTED_WARDEN_HEART), conditionsFromItem(ModItems.CORRUPTED_WARDEN_HEART))
-                .criterion(hasItem(ModItems.VEX_CORE), conditionsFromItem(ModItems.VEX_CORE))
-                .criterion(hasItem(ModItems.ALLEY_CORE), conditionsFromItem(ModItems.ALLEY_CORE))
-                .criterion(hasItem(ModBlocks.MITHRIL_PURE_BLOCK), conditionsFromItem(ModBlocks.MITHRIL_PURE_BLOCK))
-                .offerTo(exporter, convertBetween(ModItems.PURIFIED_WARDEN_HEART, ModItems.ETHER));
+                .define('C', ModItems.HOLY_CHEESE)
+                .define('E', ModItems.ETHER)
+                .define('V', ModItems.VEX_CORE)
+                .define('H', ModItems.CORRUPTED_WARDEN_HEART)
+                .define('A', ModItems.ALLEY_CORE)
+                .define('M', ModBlocks.MITHRIL_PURE_BLOCK)
+                .unlockedBy(getHasName(ModItems.HOLY_CHEESE), has(ModItems.HOLY_CHEESE))
+                .unlockedBy(getHasName(ModItems.ETHER), has(ModItems.ETHER))
+                .unlockedBy(getHasName(ModItems.CORRUPTED_WARDEN_HEART), has(ModItems.CORRUPTED_WARDEN_HEART))
+                .unlockedBy(getHasName(ModItems.VEX_CORE), has(ModItems.VEX_CORE))
+                .unlockedBy(getHasName(ModItems.ALLEY_CORE), has(ModItems.ALLEY_CORE))
+                .unlockedBy(getHasName(ModBlocks.MITHRIL_PURE_BLOCK), has(ModBlocks.MITHRIL_PURE_BLOCK))
+                .save(exporter, getConversionRecipeName(ModItems.PURIFIED_WARDEN_HEART, ModItems.ETHER));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.THE_KEY)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.THE_KEY)
                 .pattern("VEA")
                 .pattern("HDN")
                 .pattern("SYR")
-                .input('E', ModItems.ETHER)
-                .input('V', ModItems.VEX_SOUL)
-                .input('H', ModItems.PURIFIED_WARDEN_HEART)
-                .input('A', ModItems.ALLEY_SOUL)
-                .input('D', Items.DRAGON_EGG)
-                .input('S', Items.ECHO_SHARD)
-                .input('N', Items.NETHER_STAR)
-                .input('Y', Items.ENDER_EYE)
-                .input('R', Items.WITHER_ROSE)
-                .criterion(hasItem(Items.DRAGON_EGG), conditionsFromItem(Items.DRAGON_EGG))
-                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
-                .criterion(hasItem(ModItems.PURIFIED_WARDEN_HEART), conditionsFromItem(ModItems.PURIFIED_WARDEN_HEART))
-                .criterion(hasItem(ModItems.VEX_SOUL), conditionsFromItem(ModItems.VEX_SOUL))
-                .criterion(hasItem(ModItems.ALLEY_SOUL), conditionsFromItem(ModItems.ALLEY_SOUL))
-                .criterion(hasItem(Items.ECHO_SHARD), conditionsFromItem(Items.ECHO_SHARD))
-                .criterion(hasItem(Items.NETHER_STAR), conditionsFromItem(Items.NETHER_STAR))
-                .criterion(hasItem(Items.ENDER_EYE), conditionsFromItem(Items.ENDER_EYE))
-                .criterion(hasItem(Items.WITHER_ROSE), conditionsFromItem(Items.WITHER_ROSE))
-                .offerTo(exporter, convertBetween(ModItems.THE_KEY, ModItems.ETHER));
+                .define('E', ModItems.ETHER)
+                .define('V', ModItems.VEX_SOUL)
+                .define('H', ModItems.PURIFIED_WARDEN_HEART)
+                .define('A', ModItems.ALLEY_SOUL)
+                .define('D', Items.DRAGON_EGG)
+                .define('S', Items.ECHO_SHARD)
+                .define('N', Items.NETHER_STAR)
+                .define('Y', Items.ENDER_EYE)
+                .define('R', Items.WITHER_ROSE)
+                .unlockedBy(getHasName(Items.DRAGON_EGG), has(Items.DRAGON_EGG))
+                .unlockedBy(getHasName(ModItems.ETHER), has(ModItems.ETHER))
+                .unlockedBy(getHasName(ModItems.PURIFIED_WARDEN_HEART), has(ModItems.PURIFIED_WARDEN_HEART))
+                .unlockedBy(getHasName(ModItems.VEX_SOUL), has(ModItems.VEX_SOUL))
+                .unlockedBy(getHasName(ModItems.ALLEY_SOUL), has(ModItems.ALLEY_SOUL))
+                .unlockedBy(getHasName(Items.ECHO_SHARD), has(Items.ECHO_SHARD))
+                .unlockedBy(getHasName(Items.NETHER_STAR), has(Items.NETHER_STAR))
+                .unlockedBy(getHasName(Items.ENDER_EYE), has(Items.ENDER_EYE))
+                .unlockedBy(getHasName(Items.WITHER_ROSE), has(Items.WITHER_ROSE))
+                .save(exporter, getConversionRecipeName(ModItems.THE_KEY, ModItems.ETHER));
 
-        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.MITHRIL_INGOT, RecipeCategory.MISC, ModBlocks.MITHRIL_PURE_BLOCK);
-        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.MITHRIL_RAW, RecipeCategory.MISC, ModBlocks.MITHRIL_IMPURE_BLOCK);
+        nineBlockStorageRecipes(
+                exporter,
+                RecipeCategory.MISC,
+                ModItems.MITHRIL_INGOT,
+                RecipeCategory.MISC,
+                ModBlocks.MITHRIL_PURE_BLOCK
+        );
+        nineBlockStorageRecipes(
+                exporter,
+                RecipeCategory.MISC,
+                ModItems.MITHRIL_RAW,
+                RecipeCategory.MISC,
+                ModBlocks.MITHRIL_IMPURE_BLOCK
+        );
 
-        CookingRecipeJsonBuilder.createSmoking(Ingredient.ofItems(ModItems.MITHRIL_RAW), RecipeCategory.MISC, ModItems.MITHRIL_INGOT, 100, 2000)
-                .criterion(hasItem(ModItems.MITHRIL_RAW), conditionsFromItem(ModItems.MITHRIL_RAW))
-                .offerTo(exporter, getRecipeName(ModItems.MITHRIL_INGOT) + "_from_smoking");
+        SimpleCookingRecipeBuilder.smoking(
+                        Ingredient.of(ModItems.MITHRIL_RAW),
+                        RecipeCategory.MISC,
+                        ModItems.MITHRIL_INGOT,
+                        100,
+                        2000
+                )
+                .unlockedBy(getHasName(ModItems.MITHRIL_RAW), has(ModItems.MITHRIL_RAW))
+                .save(exporter, getSimpleRecipeName(ModItems.MITHRIL_INGOT) + "_from_smoking");
 
-        CookingRecipeJsonBuilder.createCampfireCooking(Ingredient.ofItems(ModItems.MITHRIL_RAW), RecipeCategory.MISC, ModItems.MITHRIL_INGOT, 200, 4000)
-                .criterion(hasItem(ModItems.MITHRIL_RAW), conditionsFromItem(ModItems.MITHRIL_RAW))
-                .offerTo(exporter, getRecipeName(ModItems.MITHRIL_INGOT) + "_from_campfire");
+        SimpleCookingRecipeBuilder.campfireCooking(
+                        Ingredient.of(ModItems.MITHRIL_RAW),
+                        RecipeCategory.MISC,
+                        ModItems.MITHRIL_INGOT,
+                        200,
+                        4000
+                )
+                .unlockedBy(getHasName(ModItems.MITHRIL_RAW), has(ModItems.MITHRIL_RAW))
+                .save(exporter, getSimpleRecipeName(ModItems.MITHRIL_INGOT) + "_from_campfire");
 
-        CookingRecipeJsonBuilder.createCampfireCooking(Ingredient.ofItems(ModBlocks.MITHRIL_IMPURE_BLOCK), RecipeCategory.MISC, ModBlocks.MITHRIL_PURE_BLOCK, 1800, 36000)
-                .criterion(hasItem(ModBlocks.MITHRIL_IMPURE_BLOCK), conditionsFromItem(ModBlocks.MITHRIL_IMPURE_BLOCK))
-                .offerTo(exporter, getRecipeName(ModBlocks.MITHRIL_PURE_BLOCK) + "_from_campfire");
+        SimpleCookingRecipeBuilder.campfireCooking(
+                        Ingredient.of(ModBlocks.MITHRIL_IMPURE_BLOCK),
+                        RecipeCategory.MISC,
+                        ModBlocks.MITHRIL_PURE_BLOCK,
+                        1800,
+                        36000
+                )
+                .unlockedBy(getHasName(ModBlocks.MITHRIL_IMPURE_BLOCK), has(ModBlocks.MITHRIL_IMPURE_BLOCK))
+                .save(exporter, getSimpleRecipeName(ModBlocks.MITHRIL_PURE_BLOCK) + "_from_campfire");
 
-        CookingRecipeJsonBuilder.createSmoking(Ingredient.ofItems(ModBlocks.MITHRIL_IMPURE_BLOCK), RecipeCategory.MISC, ModBlocks.MITHRIL_PURE_BLOCK, 900, 18000)
-                .criterion(hasItem(ModBlocks.MITHRIL_IMPURE_BLOCK), conditionsFromItem(ModBlocks.MITHRIL_IMPURE_BLOCK))
-                .offerTo(exporter, getRecipeName(ModBlocks.MITHRIL_PURE_BLOCK) + "_from_smoking");
+        SimpleCookingRecipeBuilder.smoking(
+                        Ingredient.of(ModBlocks.MITHRIL_IMPURE_BLOCK),
+                        RecipeCategory.MISC,
+                        ModBlocks.MITHRIL_PURE_BLOCK,
+                        900,
+                        18000
+                )
+                .unlockedBy(getHasName(ModBlocks.MITHRIL_IMPURE_BLOCK), has(ModBlocks.MITHRIL_IMPURE_BLOCK))
+                .save(exporter, getSimpleRecipeName(ModBlocks.MITHRIL_PURE_BLOCK) + "_from_smoking");
 
-        offerPressurePlateRecipe(exporter, ModBlocks.MITHRIL_PURE_PRESSURE_PLATE, ModItems.MITHRIL_INGOT);
-        offerSingleOutputShapelessRecipe(exporter, ModBlocks.MITHRIL_PURE_BUTTON, ModItems.MITHRIL_INGOT, "mithril_button");
-        offerWallRecipe(exporter,RecipeCategory.BUILDING_BLOCKS, ModBlocks.MITHRIL_PURE_WALL, ModBlocks.MITHRIL_PURE_BLOCK);
+        pressurePlate(exporter, ModBlocks.MITHRIL_PURE_PRESSURE_PLATE, ModItems.MITHRIL_INGOT);
+
+        oneToOneConversionRecipe(exporter, ModBlocks.MITHRIL_PURE_BUTTON, ModItems.MITHRIL_INGOT, "mithril_button");
+
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MITHRIL_PURE_WALL, ModBlocks.MITHRIL_PURE_BLOCK);
 
 
         //A changer
-        SmithingTransformRecipeJsonBuilder.create(
-                Ingredient.ofItems(ModItems.HOLY_CHEESE),
-                Ingredient.ofItems(Items.NETHERITE_INGOT),
-                Ingredient.ofItems(ModItems.MITHRIL_INGOT),
-                RecipeCategory.MISC, ModItems.ETHER)
-                .criterion(hasItem(ModItems.HOLY_CHEESE), conditionsFromItem(ModItems.HOLY_CHEESE))
-                .criterion(hasItem(Items.NETHERITE_INGOT), conditionsFromItem(Items.NETHERITE_INGOT))
-                .criterion(hasItem(ModItems.MITHRIL_INGOT), conditionsFromItem(ModItems.MITHRIL_INGOT))
-                .offerTo(exporter, new Identifier(ProtoGMT.MOD_ID, "ether_lost_craft"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.HOLY_CHEESE),
+                        Ingredient.of(Items.NETHERITE_INGOT),
+                        Ingredient.of(ModItems.MITHRIL_INGOT),
+                        RecipeCategory.MISC,
+                        ModItems.ETHER
+                )
+                .unlocks(getHasName(ModItems.HOLY_CHEESE), has(ModItems.HOLY_CHEESE))
+                .unlocks(getHasName(Items.NETHERITE_INGOT), has(Items.NETHERITE_INGOT))
+                .unlocks(getHasName(ModItems.MITHRIL_INGOT), has(ModItems.MITHRIL_INGOT))
+                .save(exporter, ProtoGMT.id("ether_lost_craft"));
 
 
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.of(Items.NETHERITE_HELMET),
+                        Ingredient.of(ModItems.ETHER),
+                        RecipeCategory.MISC,
+                        ModItems.NETHERITE_ETHER_UPGRADED_HELMET
+                )
+                .unlocks(getHasName(ModItems.ETHER_TRIM_UPGRADE), has(ModItems.ETHER_TRIM_UPGRADE))
+                .unlocks(getHasName(Items.NETHERITE_HELMET), has(Items.NETHERITE_HELMET))
+                .unlocks(getHasName(ModItems.ETHER), has(ModItems.ETHER))
+                .save(exporter, ProtoGMT.id("ether_helmet"));
 
-        SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
-                        Ingredient.ofItems(Items.NETHERITE_HELMET),
-                        Ingredient.ofItems(ModItems.ETHER),
-                        RecipeCategory.MISC, ModItems.NETHERITE_ETHER_UPGRADED_HELMET)
-                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
-                .criterion(hasItem(Items.NETHERITE_HELMET), conditionsFromItem(Items.NETHERITE_HELMET))
-                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
-                .offerTo(exporter, new Identifier(ProtoGMT.MOD_ID, "ether_helmet"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.of(Items.NETHERITE_CHESTPLATE),
+                        Ingredient.of(ModItems.ETHER),
+                        RecipeCategory.MISC,
+                        ModItems.NETHERITE_ETHER_UPGRADED_CHESTPLATE
+                )
+                .unlocks(getHasName(ModItems.ETHER_TRIM_UPGRADE), has(ModItems.ETHER_TRIM_UPGRADE))
+                .unlocks(getHasName(Items.NETHERITE_CHESTPLATE), has(Items.NETHERITE_CHESTPLATE))
+                .unlocks(getHasName(ModItems.ETHER), has(ModItems.ETHER))
+                .save(exporter, ProtoGMT.id("ether_chestplate"));
 
-                SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
-                        Ingredient.ofItems(Items.NETHERITE_CHESTPLATE),
-                        Ingredient.ofItems(ModItems.ETHER),
-                        RecipeCategory.MISC, ModItems.NETHERITE_ETHER_UPGRADED_CHESTPLATE)
-                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
-                .criterion(hasItem(Items.NETHERITE_CHESTPLATE), conditionsFromItem(Items.NETHERITE_CHESTPLATE))
-                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
-                .offerTo(exporter, new Identifier(ProtoGMT.MOD_ID, "ether_chestplate"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.of(Items.NETHERITE_LEGGINGS),
+                        Ingredient.of(ModItems.ETHER),
+                        RecipeCategory.MISC,
+                        ModItems.NETHERITE_ETHER_UPGRADED_LEGGINGS
+                )
+                .unlocks(getHasName(ModItems.ETHER_TRIM_UPGRADE), has(ModItems.ETHER_TRIM_UPGRADE))
+                .unlocks(getHasName(Items.NETHERITE_LEGGINGS), has(Items.NETHERITE_LEGGINGS))
+                .unlocks(getHasName(ModItems.ETHER), has(ModItems.ETHER))
+                .save(exporter, ProtoGMT.id("ether_leggings"));
 
-                SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
-                        Ingredient.ofItems(Items.NETHERITE_LEGGINGS),
-                        Ingredient.ofItems(ModItems.ETHER),
-                        RecipeCategory.MISC, ModItems.NETHERITE_ETHER_UPGRADED_LEGGINGS)
-                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
-                .criterion(hasItem(Items.NETHERITE_LEGGINGS), conditionsFromItem(Items.NETHERITE_LEGGINGS))
-                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
-                .offerTo(exporter, new Identifier(ProtoGMT.MOD_ID, "ether_leggings"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.of(Items.NETHERITE_BOOTS),
+                        Ingredient.of(ModItems.ETHER),
+                        RecipeCategory.MISC,
+                        ModItems.NETHERITE_ETHER_UPGRADED_BOOTS
+                )
+                .unlocks(getHasName(ModItems.ETHER_TRIM_UPGRADE), has(ModItems.ETHER_TRIM_UPGRADE))
+                .unlocks(getHasName(Items.NETHERITE_BOOTS), has(Items.NETHERITE_BOOTS))
+                .unlocks(getHasName(ModItems.ETHER), has(ModItems.ETHER))
+                .save(exporter, ProtoGMT.id("ether_boots"));
 
-                SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
-                        Ingredient.ofItems(Items.NETHERITE_BOOTS),
-                        Ingredient.ofItems(ModItems.ETHER),
-                        RecipeCategory.MISC, ModItems.NETHERITE_ETHER_UPGRADED_BOOTS)
-                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
-                .criterion(hasItem(Items.NETHERITE_BOOTS), conditionsFromItem(Items.NETHERITE_BOOTS))
-                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
-                .offerTo(exporter, new Identifier(ProtoGMT.MOD_ID, "ether_boots"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.of(ModItems.MITHRIL_PICKAXE),
+                        Ingredient.of(ModItems.ETHER),
+                        RecipeCategory.MISC,
+                        ModItems.ETHER_PICKAXE
+                )
+                .unlocks(getHasName(ModItems.ETHER_TRIM_UPGRADE), has(ModItems.ETHER_TRIM_UPGRADE))
+                .unlocks(getHasName(ModItems.MITHRIL_PICKAXE), has(ModItems.MITHRIL_PICKAXE))
+                .unlocks(getHasName(ModItems.ETHER), has(ModItems.ETHER))
+                .save(exporter, ProtoGMT.id("ether_pickaxe"));
 
-                SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
-                        Ingredient.ofItems(ModItems.MITHRIL_PICKAXE),
-                        Ingredient.ofItems(ModItems.ETHER),
-                        RecipeCategory.MISC, ModItems.ETHER_PICKAXE)
-                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
-                .criterion(hasItem(ModItems.MITHRIL_PICKAXE), conditionsFromItem(ModItems.MITHRIL_PICKAXE))
-                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
-                .offerTo(exporter, new Identifier(ProtoGMT.MOD_ID, "ether_pickaxe"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.of(ModItems.MITHRIL_AXE),
+                        Ingredient.of(ModItems.ETHER),
+                        RecipeCategory.MISC,
+                        ModItems.ETHER_AXE
+                )
+                .unlocks(getHasName(ModItems.ETHER_TRIM_UPGRADE), has(ModItems.ETHER_TRIM_UPGRADE))
+                .unlocks(getHasName(ModItems.MITHRIL_AXE), has(ModItems.MITHRIL_AXE))
+                .unlocks(getHasName(ModItems.ETHER), has(ModItems.ETHER))
+                .save(exporter, ProtoGMT.id("ether_axe"));
 
-                SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
-                        Ingredient.ofItems(ModItems.MITHRIL_AXE),
-                        Ingredient.ofItems(ModItems.ETHER),
-                        RecipeCategory.MISC, ModItems.ETHER_AXE)
-                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
-                .criterion(hasItem(ModItems.MITHRIL_AXE), conditionsFromItem(ModItems.MITHRIL_AXE))
-                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
-                .offerTo(exporter, new Identifier(ProtoGMT.MOD_ID, "ether_axe"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.of(ModItems.MITHRIL_HOE),
+                        Ingredient.of(ModItems.ETHER),
+                        RecipeCategory.MISC,
+                        ModItems.ETHER_HOE
+                )
+                .unlocks(getHasName(ModItems.ETHER_TRIM_UPGRADE), has(ModItems.ETHER_TRIM_UPGRADE))
+                .unlocks(getHasName(ModItems.MITHRIL_HOE), has(ModItems.MITHRIL_HOE))
+                .unlocks(getHasName(ModItems.ETHER), has(ModItems.ETHER))
+                .save(exporter, ProtoGMT.id("ether_hoe"));
 
-                SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
-                        Ingredient.ofItems(ModItems.MITHRIL_HOE),
-                        Ingredient.ofItems(ModItems.ETHER),
-                        RecipeCategory.MISC, ModItems.ETHER_HOE)
-                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
-                .criterion(hasItem(ModItems.MITHRIL_HOE), conditionsFromItem(ModItems.MITHRIL_HOE))
-                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
-                .offerTo(exporter, new Identifier(ProtoGMT.MOD_ID, "ether_hoe"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.of(ModItems.MITHRIL_SHOVEL),
+                        Ingredient.of(ModItems.ETHER),
+                        RecipeCategory.MISC,
+                        ModItems.ETHER_SHOVEL
+                )
+                .unlocks(getHasName(ModItems.ETHER_TRIM_UPGRADE), has(ModItems.ETHER_TRIM_UPGRADE))
+                .unlocks(getHasName(ModItems.MITHRIL_SHOVEL), has(ModItems.MITHRIL_SHOVEL))
+                .unlocks(getHasName(ModItems.ETHER), has(ModItems.ETHER))
+                .save(exporter, ProtoGMT.id("ether_shovel"));
 
-                SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
-                        Ingredient.ofItems(ModItems.MITHRIL_SHOVEL),
-                        Ingredient.ofItems(ModItems.ETHER),
-                        RecipeCategory.MISC, ModItems.ETHER_SHOVEL)
-                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
-                .criterion(hasItem(ModItems.MITHRIL_SHOVEL), conditionsFromItem(ModItems.MITHRIL_SHOVEL))
-                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
-                .offerTo(exporter, new Identifier(ProtoGMT.MOD_ID, "ether_shovel"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.ETHER_TRIM_UPGRADE),
+                        Ingredient.of(ModItems.MITHRIL_SWORD),
+                        Ingredient.of(ModItems.ETHER),
+                        RecipeCategory.MISC,
+                        ModItems.ETHER_SWORD
+                )
+                .unlocks(getHasName(ModItems.ETHER_TRIM_UPGRADE), has(ModItems.ETHER_TRIM_UPGRADE))
+                .unlocks(getHasName(ModItems.MITHRIL_SWORD), has(ModItems.MITHRIL_SWORD))
+                .unlocks(getHasName(ModItems.ETHER), has(ModItems.ETHER))
+                .save(exporter, ProtoGMT.id("ether_sword"));
 
-                SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(ModItems.ETHER_TRIM_UPGRADE),
-                        Ingredient.ofItems(ModItems.MITHRIL_SWORD),
-                        Ingredient.ofItems(ModItems.ETHER),
-                        RecipeCategory.MISC, ModItems.ETHER_SWORD)
-                .criterion(hasItem(ModItems.ETHER_TRIM_UPGRADE), conditionsFromItem(ModItems.ETHER_TRIM_UPGRADE))
-                .criterion(hasItem(ModItems.MITHRIL_SWORD), conditionsFromItem(ModItems.MITHRIL_SWORD))
-                .criterion(hasItem(ModItems.ETHER), conditionsFromItem(ModItems.ETHER))
-                .offerTo(exporter, new Identifier(ProtoGMT.MOD_ID, "ether_sword"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.MITHRIL_TOOL_UPGRADE),
+                        Ingredient.of(Items.NETHERITE_PICKAXE),
+                        Ingredient.of(ModItems.MITHRIL_INGOT),
+                        RecipeCategory.MISC,
+                        ModItems.MITHRIL_PICKAXE
+                )
+                .unlocks(getHasName(ModItems.MITHRIL_TOOL_UPGRADE), has(ModItems.MITHRIL_TOOL_UPGRADE))
+                .unlocks(getHasName(Items.NETHERITE_PICKAXE), has(Items.NETHERITE_PICKAXE))
+                .unlocks(getHasName(ModItems.MITHRIL_INGOT), has(ModItems.MITHRIL_INGOT))
+                .save(exporter, ProtoGMT.id("mithril_pickaxe"));
 
-                SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(ModItems.MITHRIL_TOOL_UPGRADE),
-                        Ingredient.ofItems(Items.NETHERITE_PICKAXE),
-                        Ingredient.ofItems(ModItems.MITHRIL_INGOT),
-                        RecipeCategory.MISC, ModItems.MITHRIL_PICKAXE)
-                .criterion(hasItem(ModItems.MITHRIL_TOOL_UPGRADE), conditionsFromItem(ModItems.MITHRIL_TOOL_UPGRADE))
-                .criterion(hasItem(Items.NETHERITE_PICKAXE), conditionsFromItem(Items.NETHERITE_PICKAXE))
-                .criterion(hasItem(ModItems.MITHRIL_INGOT), conditionsFromItem(ModItems.MITHRIL_INGOT))
-                .offerTo(exporter, new Identifier(ProtoGMT.MOD_ID, "mithril_pickaxe"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.MITHRIL_TOOL_UPGRADE),
+                        Ingredient.of(Items.NETHERITE_AXE),
+                        Ingredient.of(ModItems.MITHRIL_INGOT),
+                        RecipeCategory.MISC,
+                        ModItems.MITHRIL_AXE
+                )
+                .unlocks(getHasName(ModItems.MITHRIL_TOOL_UPGRADE), has(ModItems.MITHRIL_TOOL_UPGRADE))
+                .unlocks(getHasName(Items.NETHERITE_AXE), has(Items.NETHERITE_AXE))
+                .unlocks(getHasName(ModItems.MITHRIL_INGOT), has(ModItems.MITHRIL_INGOT))
+                .save(exporter, ProtoGMT.id("mithril_axe"));
 
-                SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(ModItems.MITHRIL_TOOL_UPGRADE),
-                        Ingredient.ofItems(Items.NETHERITE_AXE),
-                        Ingredient.ofItems(ModItems.MITHRIL_INGOT),
-                        RecipeCategory.MISC, ModItems.MITHRIL_AXE)
-                .criterion(hasItem(ModItems.MITHRIL_TOOL_UPGRADE), conditionsFromItem(ModItems.MITHRIL_TOOL_UPGRADE))
-                .criterion(hasItem(Items.NETHERITE_AXE), conditionsFromItem(Items.NETHERITE_AXE))
-                .criterion(hasItem(ModItems.MITHRIL_INGOT), conditionsFromItem(ModItems.MITHRIL_INGOT))
-                .offerTo(exporter, new Identifier(ProtoGMT.MOD_ID, "mithril_axe"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.MITHRIL_TOOL_UPGRADE),
+                        Ingredient.of(Items.NETHERITE_HOE),
+                        Ingredient.of(ModItems.MITHRIL_INGOT),
+                        RecipeCategory.MISC,
+                        ModItems.MITHRIL_HOE
+                )
+                .unlocks(getHasName(ModItems.MITHRIL_TOOL_UPGRADE), has(ModItems.MITHRIL_TOOL_UPGRADE))
+                .unlocks(getHasName(Items.NETHERITE_HOE), has(Items.NETHERITE_HOE))
+                .unlocks(getHasName(ModItems.MITHRIL_INGOT), has(ModItems.MITHRIL_INGOT))
+                .save(exporter, ProtoGMT.id("mithril_hoe"));
 
-                SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(ModItems.MITHRIL_TOOL_UPGRADE),
-                        Ingredient.ofItems(Items.NETHERITE_HOE),
-                        Ingredient.ofItems(ModItems.MITHRIL_INGOT),
-                        RecipeCategory.MISC, ModItems.MITHRIL_HOE)
-                .criterion(hasItem(ModItems.MITHRIL_TOOL_UPGRADE), conditionsFromItem(ModItems.MITHRIL_TOOL_UPGRADE))
-                .criterion(hasItem(Items.NETHERITE_HOE), conditionsFromItem(Items.NETHERITE_HOE))
-                .criterion(hasItem(ModItems.MITHRIL_INGOT), conditionsFromItem(ModItems.MITHRIL_INGOT))
-                .offerTo(exporter, new Identifier(ProtoGMT.MOD_ID, "mithril_hoe"));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.MITHRIL_TOOL_UPGRADE),
+                        Ingredient.of(Items.NETHERITE_SHOVEL),
+                        Ingredient.of(ModItems.MITHRIL_INGOT),
+                        RecipeCategory.MISC,
+                        ModItems.MITHRIL_SHOVEL
+                )
+                .unlocks(getHasName(ModItems.MITHRIL_TOOL_UPGRADE), has(ModItems.MITHRIL_TOOL_UPGRADE))
+                .unlocks(getHasName(Items.NETHERITE_SHOVEL), has(Items.NETHERITE_SHOVEL))
+                .unlocks(getHasName(ModItems.MITHRIL_INGOT), has(ModItems.MITHRIL_INGOT))
+                .save(exporter, ProtoGMT.id("mithril_shovel"));
 
-                SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(ModItems.MITHRIL_TOOL_UPGRADE),
-                        Ingredient.ofItems(Items.NETHERITE_SHOVEL),
-                        Ingredient.ofItems(ModItems.MITHRIL_INGOT),
-                        RecipeCategory.MISC, ModItems.MITHRIL_SHOVEL)
-                .criterion(hasItem(ModItems.MITHRIL_TOOL_UPGRADE), conditionsFromItem(ModItems.MITHRIL_TOOL_UPGRADE))
-                .criterion(hasItem(Items.NETHERITE_SHOVEL), conditionsFromItem(Items.NETHERITE_SHOVEL))
-                .criterion(hasItem(ModItems.MITHRIL_INGOT), conditionsFromItem(ModItems.MITHRIL_INGOT))
-                .offerTo(exporter, new Identifier(ProtoGMT.MOD_ID, "mithril_shovel"));
-
-                SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(ModItems.MITHRIL_TOOL_UPGRADE),
-                        Ingredient.ofItems(Items.NETHERITE_SWORD),
-                        Ingredient.ofItems(ModItems.MITHRIL_INGOT),
-                        RecipeCategory.MISC, ModItems.MITHRIL_SWORD)
-                .criterion(hasItem(ModItems.MITHRIL_TOOL_UPGRADE), conditionsFromItem(ModItems.MITHRIL_TOOL_UPGRADE))
-                .criterion(hasItem(Items.NETHERITE_SWORD), conditionsFromItem(Items.NETHERITE_SWORD))
-                .criterion(hasItem(ModItems.MITHRIL_INGOT), conditionsFromItem(ModItems.MITHRIL_INGOT))
-                .offerTo(exporter, new Identifier(ProtoGMT.MOD_ID, "mithril_sword"));
-
-
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.MITHRIL_TOOL_UPGRADE),
+                        Ingredient.of(Items.NETHERITE_SWORD),
+                        Ingredient.of(ModItems.MITHRIL_INGOT),
+                        RecipeCategory.MISC,
+                        ModItems.MITHRIL_SWORD
+                )
+                .unlocks(getHasName(ModItems.MITHRIL_TOOL_UPGRADE), has(ModItems.MITHRIL_TOOL_UPGRADE))
+                .unlocks(getHasName(Items.NETHERITE_SWORD), has(Items.NETHERITE_SWORD))
+                .unlocks(getHasName(ModItems.MITHRIL_INGOT), has(ModItems.MITHRIL_INGOT))
+                .save(exporter, ProtoGMT.id("mithril_sword"));
     }
 }

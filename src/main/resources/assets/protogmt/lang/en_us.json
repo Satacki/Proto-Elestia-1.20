@@ -13,45 +13,29 @@
   "item.protogmt.vex_soul": "Vex Soul",
   "item.protogmt.ether_upgrade_trim": "Ether Upgrade Trim",
   "item.protogmt.mithril_tool_upgrade": "Mithril Tool Upgrade Trim",
-
-
   "item.protogmt.chesium_pickaxe": "Chesium Pickaxe",
   "item.protogmt.chesium_hoe": "Chesium Hoe",
   "item.protogmt.chesium_shovel": "Chesium Shovel",
   "item.protogmt.chesium_axe": "Chesium Axe",
   "item.protogmt.chesium_sword": "Chesium Sword",
-
-
-  "item.protoegmt.ether_pickaxe": "Ether Pickaxe",
-  "item.protoegmt.ether_shovel": "Ether Shovel",
-  "item.protoegmt.ether_hoe": "Ether Hoe",
-  "item.protoegmt.ether_axe": "Ether Axe",
-  "item.protoegmt.ether_sword": "Ether Sword",
-
-
-  "item.protoegmt.netherite_ether_upgraded_helmet": "Netherite-Ether Upgraded Helmet",
-  "item.protoegmt.netherite_ether_upgraded_chestplate": "Netherite-Ether Upgraded Chestplate",
-  "item.protoegmt.netherite_ether_upgraded_leggings": "Netherite-Ether Upgraded Leggings",
-  "item.protoegmt.netherite_ether_upgraded_boots": "Netherite-Ether Upgraded Boots",
-
-
-
-
-
-
-  "item.protoegmt.mithril_pickaxe": "Mithril Pickaxe",
-  "item.protoegmt.mithril_axe": "Mithril Axe",
-  "item.protoegmt.mithril_shovel": "Mithril Shovel",
-  "item.protoegmt.mithril_hoe": "Mithril Hoe",
-  "item.protoegmt.mithril_sword": "Mithril Sword",
-
-
-
-
+  "item.protogmt.ether_pickaxe": "Ether Pickaxe",
+  "item.protogmt.ether_shovel": "Ether Shovel",
+  "item.protogmt.ether_hoe": "Ether Hoe",
+  "item.protogmt.ether_axe": "Ether Axe",
+  "item.protogmt.ether_sword": "Ether Sword",
+  "item.protogmt.netherite_ether_upgraded_helmet": "Netherite-Ether Upgraded Helmet",
+  "item.protogmt.netherite_ether_upgraded_chestplate": "Netherite-Ether Upgraded Chestplate",
+  "item.protogmt.netherite_ether_upgraded_leggings": "Netherite-Ether Upgraded Leggings",
+  "item.protogmt.netherite_ether_upgraded_boots": "Netherite-Ether Upgraded Boots",
+  "item.protogmt.mithril_pickaxe": "Mithril Pickaxe",
+  "item.protogmt.mithril_axe": "Mithril Axe",
+  "item.protogmt.mithril_shovel": "Mithril Shovel",
+  "item.protogmt.mithril_hoe": "Mithril Hoe",
+  "item.protogmt.mithril_sword": "Mithril Sword",
   "block.protogmt.mithril_pure_block": "Mithril (Pure) Block",
   "block.protogmt.mithril_impure_block": "Mithril (Impure) Block",
-  "block.protogmt.mithril_deepslate_ore":  "Mithril Deepslate Ore",
-  "block.protogmt.mithril_ore":  "Mithril Ore",
+  "block.protogmt.mithril_deepslate_ore": "Mithril Deepslate Ore",
+  "block.protogmt.mithril_ore": "Mithril Ore",
   "block.protogmt.ether_ore": "Pure Mineral Etherium",
   "block.protogmt.deepslate_ether_ore": "Pure Mineral Deepslated Etherium",
   "block.protogmt.mithril_pure_stairs": "Pure Mithril Stairs",
@@ -62,23 +46,15 @@
   "block.protogmt.mithril_pure_pressure_plate": "Mithril Pressure Plate",
   "block.protogmt.mithril_impure_wall": "Mithril Impure Wall",
   "block.protogmt.mithril_pure_wall": "Mithril Pure Wall",
-
-
   "itemgroup.elestia_ore": "Minerai de Abyss Magic",
-
   "item.protogmt.ether_scanner.tooltip.shiftkey": "Used as a mean to scan for Ether Mineral in a 16x16 block radius. It only scan under you !",
   "item.protogmt.ether_scanner.tooltip": "Right Click to use, 512 Usage. Press §eShift§r for more info",
-
   "item.protogmt.ether_trim.tooltip": "This was once used as a mean to push furthermore Ancient Alloy. Press §eShift§r for more info",
   "item.protogmt.ether_trim.tooltip.shiftkey": "This ancient trim is used to push Netherite to it's Upmost limit.",
   "item.protogmt.ether_trim.tooltip.shiftkey2": "Legend once said that it is resistant enough to match a Warden.",
-
   "item.protogmt.mithril_tool.tooltip": "It is incomplete and you know it. But it's at least better than Netherite for now...",
   "item.protogmt.mithril_tool.tooltip.shiftkey": "Still not enough. It can be more powerful. Find something anything !",
   "item.protogmt.mithril_tool.tooltip.shiftkey2": "You are so close to match the Warden just a bit more ! Have Faith !",
-
-
-
   "item.protogmt.warden_heart_corrupted.tooltip.shiftkey": "§4Maybe you could make use of it... The Ether might be it ?",
   "item.protogmt.warden_heart_corrupted.tooltip": "§1A small beat can still be heard from the one guarding the gate...",
   "item.protogmt.holy_cheese.tooltip.shiftkey": "Un fromage d'exception créer à partir de l'ether le plus pure possible !",

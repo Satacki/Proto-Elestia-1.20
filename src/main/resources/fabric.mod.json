@@ -1,40 +1,40 @@
 {
-	"schemaVersion": 1,
-	"id": "protoelestia",
-	"version": "${version}",
-	"name": "Proto GMT",
-	"description": "First Step into the Abyss",
-	"authors": [
-		"Lykos"
-	],
-	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
-	"license": "MIT",
-	"icon": "assets/protogmt/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"net.lykos.protogmt.ProtoGMT"
-		],
-		"fabric-datagen": [
-			"net.lykos.protogmt.ProtoGMTDataGenerator"
-		],
-		"client": [
-			"net.lykos.protogmt.ProtoGMTModClient"
-		]
-	},
-	"mixins": [
-      "protogmt.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.15.7",
-		"minecraft": "~1.20.1",
-		"java": ">=17",
-		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
-	}
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "Proto GMT",
+  "description": "First Step into the Abyss",
+  "authors": [
+    "Lykos"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Satacki/Proto-Elestia-1.20",
+    "sources": "https://github.com/Satacki/Proto-Elestia-1.20"
+  },
+  "license": "MIT",
+  "icon": "assets/protogmt/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.lykos.protogmt.ProtoGMT"
+    ],
+    "fabric-datagen": [
+      "net.lykos.protogmt.ProtoGMTDataGenerator"
+    ],
+    "client": [
+      "net.lykos.protogmt.ProtoGMTModClient"
+    ]
+  },
+  "mixins": [
+    "protogmt.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.7",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
 }

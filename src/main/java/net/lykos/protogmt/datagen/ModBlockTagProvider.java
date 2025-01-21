@@ -2,28 +2,28 @@ package net.lykos.protogmt.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.lykos.protogmt.block.ModBlocks;
+import net.lykos.protogmt.registry.ModBlocks;
 import net.lykos.protogmt.util.ModTags;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 
 import java.util.concurrent.CompletableFuture;
 
 public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
-    public ModBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+    public ModBlockTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
     @Override
-    protected void configure(RegistryWrapper.WrapperLookup arg) {
+    protected void addTags(HolderLookup.Provider arg) {
         getOrCreateTagBuilder(ModTags.Blocks.ETHER_DETECTOR_ETHER_BLOCKS)
                 .add(ModBlocks.ETHER_ORE)
                 .add(ModBlocks.DEEPSLATE_ETHER_ORE);
 
-        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.ETHER_ORE)
                 .add(ModBlocks.DEEPSLATE_ETHER_ORE)
                 .add(ModBlocks.MITHRIL_IMPURE_BLOCK)
@@ -64,13 +64,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
 
         //Mithril If i'm correct.
-        getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, new Identifier("fabric", "need_tool_level_5")));
+        getOrCreateTagBuilder(TagKey.create(Registries.BLOCK, new ResourceLocation("fabric", "need_tool_level_5")));
 
         //Ether.
-        getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, new Identifier("fabric", "need_tool_level_6")));
+        getOrCreateTagBuilder(TagKey.create(Registries.BLOCK, new ResourceLocation("fabric", "need_tool_level_6")));
 
         //Chesium but it's a Troll Material so don't expect something here soon.
-        getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, new Identifier("fabric", "need_tool_level_7")));
+        getOrCreateTagBuilder(TagKey.create(Registries.BLOCK, new ResourceLocation("fabric", "need_tool_level_7")));
 
     }
 }

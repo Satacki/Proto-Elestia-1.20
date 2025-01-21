@@ -1,0 +1,61 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ether": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:ether"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ether_upgrade_trim": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:ether_upgrade_trim"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:netherite_helmet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "protogmt:ether_helmet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_ether_upgrade_trim",
+      "has_netherite_helmet",
+      "has_ether",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "protogmt:ether_helmet"
+    ]
+  },
+  "sends_telemetry_event": false
+}

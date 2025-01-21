@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "minecraft:milk_bucket"
+    },
+    "S": {
+      "item": "protogmt:mithril_pure_block"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SPS",
+    "SSS"
+  ],
+  "result": {
+    "item": "protogmt:holy_cheese"
+  },
+  "show_notification": true
+}

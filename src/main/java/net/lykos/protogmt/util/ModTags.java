@@ -1,43 +1,35 @@
 package net.lykos.protogmt.util;
 
 import net.lykos.protogmt.ProtoGMT;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 
 public class ModTags {
-
-
     public static class Blocks {
-
         public static final TagKey<Block> ETHER_DETECTOR_ETHER_BLOCKS =
                 createBlockTag("ether_detector_ether_blocks");
 
         private static TagKey<Block> createBlockTag(String name) {
-            return TagKey.of(RegistryKeys.BLOCK, new Identifier(ProtoGMT.MOD_ID, name));
+            return TagKey.create(Registries.BLOCK, new ResourceLocation(ProtoGMT.MOD_ID, name));
         }
 
         private static TagKey<Block> createCommonBlockTag(String name) {
-            return TagKey.of(RegistryKeys.BLOCK, new Identifier("c", name));
+            return TagKey.create(Registries.BLOCK, new ResourceLocation("c", name));
         }
-
     }
 
-    public static class Items{
+    public static class Items {
         public static class Blocks {
-
             private static TagKey<Item> createItemTag(String name) {
-                return TagKey.of(RegistryKeys.ITEM, new Identifier(ProtoGMT.MOD_ID, name));
+                return TagKey.create(Registries.ITEM, new ResourceLocation(ProtoGMT.MOD_ID, name));
             }
 
             private static TagKey<Item> createCommonItemTag(String name) {
-                return TagKey.of(RegistryKeys.ITEM, new Identifier("c", name));
+                return TagKey.create(Registries.ITEM, new ResourceLocation("c", name));
             }
-
         }
-
     }
 }
