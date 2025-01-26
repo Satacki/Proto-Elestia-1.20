@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "protogmt:ether_ore",
+    "protogmt:deepslate_ether_ore",
+    "protogmt:mithril_impure_block",
+    "protogmt:mithril_pure_block",
+    "protogmt:mithril_ore",
+    "protogmt:mithril_deepslate_ore",
+    "protogmt:mithril_pure_button",
+    "protogmt:mithril_pure_pressure_plate",
+    "protogmt:mithril_impure_slab",
+    "protogmt:mithril_pure_slab",
+    "protogmt:mithril_impure_stairs",
+    "protogmt:mithril_pure_wall",
+    "protogmt:mithril_impure_wall",
+    "protogmt:mithril_pure_stairs"
+  ]
+}

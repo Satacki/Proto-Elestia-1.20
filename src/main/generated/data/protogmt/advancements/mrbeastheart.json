@@ -1,0 +1,39 @@
+{
+  "parent": "protogmt:wardenheart",
+  "criteria": {
+    "has_mithril_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:purified_warden_heart"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "protogmt:textures/block/mithril_pure_block.png",
+    "description": {
+      "text": "Uh... So i guess the Warden like Cheese ?"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "protogmt:purified_warden_heart"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Taming the beast."
+    }
+  },
+  "requirements": [
+    [
+      "has_mithril_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

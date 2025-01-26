@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "protogmt:block/mithril_impure_block",
+    "side": "protogmt:block/mithril_impure_block",
+    "top": "protogmt:block/mithril_impure_block"
+  }
+}

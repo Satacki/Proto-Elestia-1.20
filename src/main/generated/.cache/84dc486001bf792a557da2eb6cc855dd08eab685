@@ -1,0 +1,9 @@
+// 1.20.1	2025-01-20T16:29:13.8380849	Proto GMT/Tags for minecraft:block
+0d7d87140b1eefc15c4d6b67fbf969d06a7aaf5e data\minecraft\tags\blocks\needs_stone_tool.json
+33030f71fb7d455243d5113b7540fe7a6ea536b4 data\minecraft\tags\blocks\mineable\pickaxe.json
+93b45d713ad860cef8a921162594ed624c40a91b data\minecraft\tags\blocks\walls.json
+8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\fabric\tags\blocks\need_tool_level_5.json
+e072015a69f91aeaffcbc457f82f63547e582051 data\protogmt\tags\blocks\ether_detector_ether_blocks.json
+8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\fabric\tags\blocks\need_tool_level_6.json
+e072015a69f91aeaffcbc457f82f63547e582051 data\minecraft\tags\blocks\needs_diamond_tool.json
+8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\fabric\tags\blocks\need_tool_level_7.json

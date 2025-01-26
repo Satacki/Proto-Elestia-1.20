@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 4000,
+  "experience": 200.0,
+  "ingredient": {
+    "item": "protogmt:raw_mithril"
+  },
+  "result": "protogmt:mithril_ingot"
+}

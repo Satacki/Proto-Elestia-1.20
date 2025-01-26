@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_inventory",
+  "textures": {
+    "texture": "protogmt:block/mithril_pure_block"
+  }
+}

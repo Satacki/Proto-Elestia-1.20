@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "item": "protogmt:mithril_tool_upgrade"
+    },
+    "P": {
+      "item": "protogmt:ether"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "QNQ",
+    "QPQ",
+    "QQQ"
+  ],
+  "result": {
+    "item": "protogmt:ether_upgrade_trim"
+  },
+  "show_notification": true
+}

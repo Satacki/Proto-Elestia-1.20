@@ -1,0 +1,40 @@
+{
+  "parent": "protogmt:ether",
+  "criteria": {
+    "has_mithril_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:ether_hoe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "protogmt:textures/block/mithril_pure_block.png",
+    "description": {
+      "text": "You wasted. The only type of mana stone obtainable in this realm... For a F**king HOE ?! Come on please... Netherite was enough already. Please stop. Consider your life choices. -Dearly your Narrator Bacharu"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "item": "protogmt:ether_hoe",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Bruh."
+    }
+  },
+  "requirements": [
+    [
+      "has_mithril_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
