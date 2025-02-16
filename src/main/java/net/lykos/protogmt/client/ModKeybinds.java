@@ -14,7 +14,7 @@ import net.lykos.protogmt.gui.BondrewdArmorScreen;
 import net.lykos.protogmt.gui.BondrewdArmorScreenHandler;
 import net.lykos.protogmt.items.IdofrontArmorItem;
 
-//I'm starting to lose my mind
+//I'm starting to loose my mind
 
 public class ModKeybinds {
     public static final String KEY_CATEGORY_PROTOMOD = "key.categories.protogmt";
