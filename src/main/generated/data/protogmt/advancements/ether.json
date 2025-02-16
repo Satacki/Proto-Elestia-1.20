@@ -1,0 +1,39 @@
+{
+  "parent": "protogmt:ether_scanner",
+  "criteria": {
+    "has_mithril_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:ether"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "protogmt:textures/block/mithril_pure_block.png",
+    "description": {
+      "text": "You have collected the first ever mana stone know to man."
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "protogmt:ether"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "The First Mana Stone"
+    }
+  },
+  "requirements": [
+    [
+      "has_mithril_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

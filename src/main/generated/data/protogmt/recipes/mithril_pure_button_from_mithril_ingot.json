@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "mithril_button",
+  "ingredients": [
+    {
+      "item": "protogmt:mithril_ingot"
+    }
+  ],
+  "result": {
+    "item": "protogmt:mithril_pure_button"
+  }
+}

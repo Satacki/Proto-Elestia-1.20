@@ -1,0 +1,39 @@
+{
+  "parent": "protogmt:idofront",
+  "criteria": {
+    "has_mithril_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:idofront"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "protogmt:textures/block/cartridge.png",
+    "description": {
+      "text": "Create a Cartridge to disable negative effect linked to the blood"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "item": "protogmt:cartridge"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "It is a matter of love !"
+    }
+  },
+  "requirements": [
+    [
+      "has_mithril_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

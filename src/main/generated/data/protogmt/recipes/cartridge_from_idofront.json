@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "tag": "yourmodid:banners"
+    },
+    "E": {
+      "item": "minecraft:polished_blackstone_button"
+    },
+    "H": {
+      "item": "minecraft:player_head"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "IEI",
+    "BHB",
+    "III"
+  ],
+  "result": {
+    "item": "protogmt:cartridge"
+  },
+  "show_notification": true
+}

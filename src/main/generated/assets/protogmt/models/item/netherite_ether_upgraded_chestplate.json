@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "protogmt:item/netherite_ether_upgraded_chestplate"
+  }
+}

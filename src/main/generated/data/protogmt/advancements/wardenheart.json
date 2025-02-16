@@ -1,0 +1,39 @@
+{
+  "parent": "protogmt:wardenkill",
+  "criteria": {
+    "has_mithril_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:corrupted_warden_heart"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "protogmt:textures/block/mithril_pure_block.png",
+    "description": {
+      "text": "You were lucky enough to obtain the Warden Heart."
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "protogmt:corrupted_warden_heart"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Heart of the Beast"
+    }
+  },
+  "requirements": [
+    [
+      "has_mithril_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

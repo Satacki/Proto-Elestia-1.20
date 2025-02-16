@@ -1,0 +1,61 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ether": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:ether"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ether_upgrade_trim": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:ether_upgrade_trim"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mithril_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:mithril_shovel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "protogmt:ether_shovel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_ether_upgrade_trim",
+      "has_mithril_shovel",
+      "has_ether",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "protogmt:ether_shovel"
+    ]
+  },
+  "sends_telemetry_event": false
+}

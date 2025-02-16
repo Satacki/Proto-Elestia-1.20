@@ -1,0 +1,39 @@
+{
+  "parent": "protogmt:mrbeastheart",
+  "criteria": {
+    "has_mithril_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:the_key"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "protogmt:textures/block/mithril_pure_block.png",
+    "description": {
+      "text": "All those challenge yet your soul never weavered... As the narrator of your story i'll tell you that you are worthy of whatever come next."
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "item": "protogmt:the_key"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "The Key to the Soul"
+    }
+  },
+  "requirements": [
+    [
+      "has_mithril_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

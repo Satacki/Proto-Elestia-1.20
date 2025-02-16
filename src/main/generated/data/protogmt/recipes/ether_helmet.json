@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "protogmt:ether"
+  },
+  "base": {
+    "item": "minecraft:netherite_helmet"
+  },
+  "result": {
+    "item": "protogmt:netherite_ether_upgraded_helmet"
+  },
+  "template": {
+    "item": "protogmt:ether_upgrade_trim"
+  }
+}

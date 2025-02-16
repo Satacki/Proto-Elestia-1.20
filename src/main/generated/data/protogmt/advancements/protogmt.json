@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "has_mithril_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:mithril_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "protogmt:textures/block/mithril_pure_block.png",
+    "description": {
+      "text": "The very first step into the Abyss."
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "protogmt:mithril_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Abyss Magic"
+    }
+  },
+  "requirements": [
+    [
+      "has_mithril_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

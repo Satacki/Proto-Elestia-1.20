@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "protogmt:block/mithril_pure_slab"
+    },
+    "type=double": {
+      "model": "protogmt:block/mithril_pure_block"
+    },
+    "type=top": {
+      "model": "protogmt:block/mithril_pure_slab_top"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "protogmt:ether"
+  },
+  "base": {
+    "item": "protogmt:mithril_axe"
+  },
+  "result": {
+    "item": "protogmt:ether_axe"
+  },
+  "template": {
+    "item": "protogmt:ether_upgrade_trim"
+  }
+}

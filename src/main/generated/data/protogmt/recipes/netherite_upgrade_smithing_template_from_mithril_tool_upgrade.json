@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "protogmt:mithril_pure_block"
+    },
+    "S": {
+      "item": "protogmt:mithril_impure_block"
+    },
+    "U": {
+      "item": "minecraft:netherite_upgrade_smithing_template"
+    }
+  },
+  "pattern": [
+    "SUS",
+    "SPS",
+    "PPP"
+  ],
+  "result": {
+    "item": "protogmt:mithril_tool_upgrade"
+  },
+  "show_notification": true
+}

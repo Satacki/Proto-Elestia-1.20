@@ -1,0 +1,54 @@
+{
+  "parent": "protogmt:ether",
+  "criteria": {
+    "has_ether_armor": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:netherite_ether_upgraded_helmet"
+            ]
+          },
+          {
+            "items": [
+              "protogmt:netherite_ether_upgraded_boots"
+            ]
+          },
+          {
+            "items": [
+              "protogmt:netherite_ether_upgraded_chestplate"
+            ]
+          },
+          {
+            "items": [
+              "protogmt:netherite_ether_upgraded_leggings"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "protogmt:textures/block/mithril_pure_block.png",
+    "description": {
+      "text": "An armor made from the very First Mana Stone in existence. For the common folks it might be as powerful as it seems. But trust me it can get even more crazy and powerful. -Bacharu"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "item": "protogmt:ether_upgrade_trim"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Apostle of Greed"
+    }
+  },
+  "requirements": [
+    [
+      "has_ether_armor"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

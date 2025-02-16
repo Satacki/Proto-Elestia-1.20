@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_pressed",
+  "textures": {
+    "texture": "protogmt:block/mithril_pure_block"
+  }
+}

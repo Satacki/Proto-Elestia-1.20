@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 36000,
+  "experience": 1800.0,
+  "ingredient": {
+    "item": "protogmt:mithril_impure_block"
+  },
+  "result": "protogmt:mithril_pure_block"
+}

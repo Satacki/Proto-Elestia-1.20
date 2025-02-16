@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "protogmt:idofront"
+  },
+  "base": {
+    "item": "minecraft:netherite_chestplate"
+  },
+  "result": {
+    "item": "protogmt:idofront_chestplate"
+  },
+  "template": {
+    "item": "protogmt:mithril_tool_upgrade"
+  }
+}

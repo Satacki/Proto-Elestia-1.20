@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "protogmt:mithril_ingot"
+  },
+  "base": {
+    "item": "minecraft:netherite_ingot"
+  },
+  "result": {
+    "item": "protogmt:ether"
+  },
+  "template": {
+    "item": "protogmt:holy_cheese"
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "parent": "protogmt:ether",
+  "criteria": {
+    "has_ether_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:ether_axe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ether_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:netherite_ether_upgraded_boots"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ether_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:netherite_ether_upgraded_chestplate"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ether_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:netherite_ether_upgraded_helmet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ether_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:ether_hoe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ether_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:netherite_ether_upgraded_leggings"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ether_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:ether_pickaxe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ether_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:ether_shovel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ether_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:ether_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "protogmt:textures/block/mithril_pure_block.png",
+    "description": {
+      "text": "You have upgraded your Netherite Tools and Armor !"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:netherite_upgrade_smithing_template"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Ether Upgrade !"
+    }
+  },
+  "requirements": [
+    [
+      "has_ether_sword",
+      "has_ether_axe",
+      "has_ether_pickaxe",
+      "has_ether_shovel",
+      "has_ether_hoe",
+      "has_ether_helmet",
+      "has_ether_chestplate",
+      "has_ether_leggings",
+      "has_ether_boots"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

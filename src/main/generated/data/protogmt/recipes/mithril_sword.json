@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "protogmt:mithril_ingot"
+  },
+  "base": {
+    "item": "minecraft:netherite_sword"
+  },
+  "result": {
+    "item": "protogmt:mithril_sword"
+  },
+  "template": {
+    "item": "protogmt:mithril_tool_upgrade"
+  }
+}

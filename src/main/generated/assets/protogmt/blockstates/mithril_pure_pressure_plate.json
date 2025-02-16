@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "protogmt:block/mithril_pure_pressure_plate"
+    },
+    "powered=true": {
+      "model": "protogmt:block/mithril_pure_pressure_plate_down"
+    }
+  }
+}

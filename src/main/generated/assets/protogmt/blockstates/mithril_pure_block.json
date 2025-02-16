@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "protogmt:block/mithril_pure_block"
+    }
+  }
+}
