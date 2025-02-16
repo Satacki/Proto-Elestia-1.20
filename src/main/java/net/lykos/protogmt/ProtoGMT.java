@@ -28,7 +28,6 @@ public class ProtoGMT implements ModInitializer {
         ModBlocks.init();
         ModRegistries.init();
         ModScreenHandlers.register();
-        ModKeybinds.register();
 
         OpenCartridgeGuiPacket.register();
 

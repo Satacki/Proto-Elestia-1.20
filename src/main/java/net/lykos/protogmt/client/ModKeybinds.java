@@ -1,13 +1,14 @@
 package net.lykos.protogmt.client;
 
+import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.lykos.protogmt.network.OpenCartridgeGuiPacket;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import org.lwjgl.glfw.GLFW;
 import net.lykos.protogmt.gui.BondrewdArmorScreen;
@@ -43,13 +44,7 @@ public class ModKeybinds {
     private static void openCartridgeGui(Player player) {
         if (player.getInventory().getArmor(2).getItem() instanceof IdofrontArmorItem) {
             // Open the GUI on the client
-            Minecraft.getInstance().setScreen(
-                    new BondrewdArmorScreen(
-                            new BondrewdArmorScreenHandler(0, player.getInventory()), // ScreenHandler
-                            player.getInventory(), // Player Inventory
-                            Component.literal("Cartridge Slots") // Title
-                    )
-            );
+            ClientPlayNetworking.send(OpenCartridgeGuiPacket.ID, new FriendlyByteBuf(Unpooled.buffer()));
         } else {
             player.sendSystemMessage(Component.literal("You must be wearing the Idofront Chestplate!"));
         }

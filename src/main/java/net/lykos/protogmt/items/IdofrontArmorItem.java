@@ -2,6 +2,7 @@ package net.lykos.protogmt.items;
 
 import net.lykos.protogmt.client.IdofrontArmorRenderer;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -33,34 +34,44 @@ public class IdofrontArmorItem extends ArmorItem implements GeoItem {
         super(material, type, settings);
     }
 
-    /**
-     * ✅ Stores a Cartridge in a specific slot (0, 1, 2).
-     */
+
     public void setCartridge(ItemStack chestplate, int slot, ItemStack cartridge) {
-        if (slot < 0 || slot >= 3) return; // Ensure valid slot number
         CompoundTag tag = chestplate.getOrCreateTag();
+
+        // Store cartridge in the correct slot
+        ListTag cartridges = tag.getList("Cartridges", 10); // Type 10 = CompoundTag
+        CompoundTag cartridgeTag = new CompoundTag();
+
         if (!cartridge.isEmpty()) {
-            tag.put("Cartridge" + slot, cartridge.save(new CompoundTag())); // Save cartridge item in slot
+            cartridge.save(cartridgeTag);
+            if (cartridges.size() <= slot) {
+                cartridges.add(cartridgeTag);
+            } else {
+                cartridges.set(slot, cartridgeTag);
+            }
         } else {
-            tag.remove("Cartridge" + slot); // Remove if empty
+            if (cartridges.size() > slot) {
+                cartridges.remove(slot);
+            }
         }
+
+        tag.put("Cartridges", cartridges);
     }
 
-    /**
-     * ✅ Retrieves the Cartridge from a specific slot (0, 1, 2).
-     */
+
     public ItemStack getCartridge(ItemStack chestplate, int slot) {
-        if (slot < 0 || slot >= 3) return ItemStack.EMPTY; // Ensure valid slot number
         CompoundTag tag = chestplate.getTag();
-        if (tag != null && tag.contains("Cartridge" + slot)) {
-            return ItemStack.of(tag.getCompound("Cartridge" + slot));
+        if (tag != null && tag.contains("Cartridges")) {
+            ListTag cartridges = tag.getList("Cartridges", 10);
+            if (slot < cartridges.size()) {
+                return ItemStack.of(cartridges.getCompound(slot));
+            }
         }
         return ItemStack.EMPTY;
     }
 
-    /**
-     * ✅ Checks if any Cartridge is inserted in the armor.
-     */
+
+
     public boolean hasCartridge(ItemStack chestplate) {
         for (int i = 0; i < 3; i++) {
             if (!getCartridge(chestplate, i).isEmpty()) {
@@ -70,9 +81,7 @@ public class IdofrontArmorItem extends ArmorItem implements GeoItem {
         return false;
     }
 
-    /**
-     * ✅ Opens the Cartridge GUI when the Keybind is pressed.
-     */
+
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         ItemStack heldItem = player.getItemInHand(hand);
@@ -88,9 +97,6 @@ public class IdofrontArmorItem extends ArmorItem implements GeoItem {
         return super.use(world, player, hand);
     }
 
-    /**
-     * ✅ Keeps Geckolib rendering intact.
-     */
     @Override
     public void createRenderer(Consumer<Object> consumer) {
         consumer.accept(new RenderProvider() {

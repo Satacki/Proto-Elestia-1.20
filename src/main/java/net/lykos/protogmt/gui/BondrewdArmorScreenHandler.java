@@ -1,10 +1,8 @@
 package net.lykos.protogmt.gui;
 
 import net.lykos.protogmt.items.CartridgeItem;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ArmorItem;
@@ -66,12 +64,15 @@ public class BondrewdArmorScreenHandler extends AbstractContainerMenu {
     @Override
     public void removed(Player player) {
         super.removed(player);
-       // if (chestplate.getItem() instanceof IdofrontArmorItem armor) {
-           // for (int i = 0; i < 3; i++) {
-         //       armor.setCartridge(chestplate, i, this.inventory.getItem(i));
-            //}
-        //}
+
+        ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
+        if (chestplate.getItem() instanceof IdofrontArmorItem) {
+            for (int i = 0; i < 3; i++) {
+                ((IdofrontArmorItem) chestplate.getItem()).setCartridge(chestplate, i, this.slots.get(i).getItem());
+            }
+        }
     }
+
     @Override
     public boolean canTakeItemForPickAll(ItemStack stack, Slot slot) {
 

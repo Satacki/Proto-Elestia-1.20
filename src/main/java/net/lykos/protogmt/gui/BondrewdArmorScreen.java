@@ -28,10 +28,6 @@ public class BondrewdArmorScreen extends AbstractContainerScreen<BondrewdArmorSc
     }
 
 
-
-
-
-
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
         this.renderBackground(guiGraphics);
