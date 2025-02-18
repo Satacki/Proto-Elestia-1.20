@@ -77,7 +77,6 @@ public class BondrewdArmorScreenHandler extends AbstractContainerMenu {
     public boolean canTakeItemForPickAll(ItemStack stack, Slot slot) {
 
         if (slot.getItem().getItem() instanceof ArmorItem) {
-            System.out.println("[DEBUG] Prevented armor removal via normal click!");
             return false;
         }
         return super.canTakeItemForPickAll(stack, slot);
@@ -89,9 +88,6 @@ public class BondrewdArmorScreenHandler extends AbstractContainerMenu {
 
         if (slot != null && slot.hasItem()) {
             ItemStack stack = slot.getItem();
-
-            System.out.println("[DEBUG] Clicked slot: " + index + " | Item: " + stack.getItem());
-
 
             if (stack.getItem() instanceof ArmorItem) {
                 return ItemStack.EMPTY;

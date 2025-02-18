@@ -1,13 +1,17 @@
 package net.lykos.protogmt;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.lykos.protogmt.client.ModKeybinds;
+import net.lykos.protogmt.events.ModEvents;
+import net.lykos.protogmt.events.NegativeEffectBlocker;
 import net.lykos.protogmt.network.OpenCartridgeGuiPacket;
 import net.lykos.protogmt.registry.ModBlocks;
 import net.lykos.protogmt.registry.ModCreativeTabs;
 import net.lykos.protogmt.registry.ModItems;
 import net.lykos.protogmt.registry.ModScreenHandlers;
+import net.lykos.protogmt.util.ModEntityData;
 import net.lykos.protogmt.util.ModRegistries;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
@@ -28,8 +32,12 @@ public class ProtoGMT implements ModInitializer {
         ModBlocks.init();
         ModRegistries.init();
         ModScreenHandlers.register();
+        ModEvents.register();
+
 
         OpenCartridgeGuiPacket.register();
+
+        NegativeEffectBlocker.register();
 
     }
 }
