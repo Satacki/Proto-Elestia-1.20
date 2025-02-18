@@ -40,6 +40,8 @@ dependencies {
 }
 
 tasks.processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE // ✅ Prevents duplicate files
+
     val props = mapOf(
         "mod_id" to "mod_id"(),
         "version" to "mod_version"()
@@ -50,7 +52,14 @@ tasks.processResources {
     filesMatching(listOf("fabric.mod.json")) {
         expand(props)
     }
+
+    // ✅ Ensure all .ogg sound files are copied without duplication
+    from("src/main/resources") {
+        include("**/*.ogg")
+    }
 }
+
+
 
 tasks.withType<JavaCompile>().configureEach {
     options.release = 17

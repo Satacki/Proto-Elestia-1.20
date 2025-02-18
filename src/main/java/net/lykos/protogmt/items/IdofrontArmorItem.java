@@ -1,15 +1,22 @@
 package net.lykos.protogmt.items;
 
+import com.google.common.collect.LinkedHashMultimap;
+import com.google.common.collect.Multimap;
 import net.lykos.protogmt.client.IdofrontArmorRenderer;
+import net.lykos.protogmt.sound.ModSounds;
 import net.lykos.protogmt.util.IPlayerCartridgeData;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
@@ -25,6 +32,8 @@ import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
+
+import java.util.UUID;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -87,6 +96,17 @@ public class IdofrontArmorItem extends ArmorItem implements GeoItem {
         ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
         if (!(chestplate.getItem() instanceof IdofrontArmorItem)) return false;
 
+        if (ModSounds.CARTRIDGE_ACTIVATE != null) {
+            player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
+                    ModSounds.CARTRIDGE_ACTIVATE, SoundSource.PLAYERS, 5.0f, 1.0f);
+        } else {
+            System.out.println("[DEBUG] Cartridge sound event is NULL!");
+        }
+
+
+
+
+
         for (int i = 0; i < 3; i++) {
             ItemStack cartridge = getCartridge(chestplate, i);
             if (!cartridge.isEmpty()) {
@@ -114,6 +134,19 @@ public class IdofrontArmorItem extends ArmorItem implements GeoItem {
     }
 
 
+    @Override
+    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
+        Multimap<Attribute, AttributeModifier> modifiers = LinkedHashMultimap.create(super.getDefaultAttributeModifiers(slot)); // ✅ Create a mutable copy
+
+        if (slot == EquipmentSlot.CHEST) { // ✅ Apply only to the chestplate
+            modifiers.put(Attributes.MOVEMENT_SPEED,
+                    new AttributeModifier(UUID.fromString("123e4567-e89b-12d3-a456-426614174000"),
+                            "Armor Speed Reduction", -0.1, AttributeModifier.Operation.MULTIPLY_TOTAL)); // ✅ Reduce speed by 10%
+        }
+
+        return modifiers;
+    }
+
 
 
 
@@ -122,12 +155,14 @@ public class IdofrontArmorItem extends ArmorItem implements GeoItem {
         ItemStack heldItem = player.getItemInHand(hand);
 
         if (!world.isClientSide && heldItem.getItem() == this) {
-            // Open Cartridge GUI
-            player.openMenu(new SimpleMenuProvider(
-                    (syncId, inv, p) -> new BondrewdArmorScreenHandler(syncId, inv, heldItem),
-                    Component.literal("Cartridge Slots")
-            ));
-            return InteractionResultHolder.success(heldItem);
+            // ✅ Prevent GUI from opening if the armor is being equipped
+            if (player.getItemBySlot(EquipmentSlot.CHEST).isEmpty()) {
+                player.openMenu(new SimpleMenuProvider(
+                        (syncId, inv, p) -> new BondrewdArmorScreenHandler(syncId, inv, heldItem),
+                        Component.literal("Cartridge Slots")
+                ));
+                return InteractionResultHolder.success(heldItem);
+            }
         }
         return super.use(world, player, hand);
     }
