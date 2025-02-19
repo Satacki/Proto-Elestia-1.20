@@ -30,6 +30,12 @@ public class ModItems {
             new Item(new FabricItemSettings())
     );
 
+    public static final Item IDOFRONT_TEMPLATE = registerItem(
+            "idofront_template",
+            new Item(new FabricItemSettings().rarity(Rarity.RARE))
+    );
+
+
     public static final Item VEX_SOUL = registerItem(
             "vex_soul",
             new Item(new FabricItemSettings().rarity(Rarity.RARE))

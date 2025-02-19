@@ -1,0 +1,11 @@
+{
+  "cartridge_activate": {
+    "sounds": [
+      {
+        "name": "protogmt:cartridge_activate",
+        "volume": 1.0,
+        "pitch": 1.0
+      }
+    ]
+  }
+}

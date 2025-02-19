@@ -11,6 +11,7 @@ import net.lykos.protogmt.network.OpenCartridgeGuiPacket;
 import net.lykos.protogmt.registry.ModBlocks;
 import net.lykos.protogmt.registry.ModCreativeTabs;
 import net.lykos.protogmt.registry.ModItems;
+import net.lykos.protogmt.loot.ModLootTableModifiers;
 import net.lykos.protogmt.registry.ModScreenHandlers;
 import net.lykos.protogmt.sound.ModSounds;
 import net.lykos.protogmt.util.ModEntityData;
@@ -37,6 +38,7 @@ public class ProtoGMT implements ModInitializer {
         ModEvents.register();
         ModSounds.register();
         CartridgeTotemHandler.register();
+        ModLootTableModifiers.register();
 
         OpenCartridgeGuiPacket.register();
         NegativeEffectBlocker.register();

@@ -7,6 +7,7 @@ import net.lykos.protogmt.sound.ModSounds;
 import net.lykos.protogmt.util.IPlayerCartridgeData;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -91,47 +92,49 @@ public class IdofrontArmorItem extends ArmorItem implements GeoItem {
         }
         return false;
     }
+    
 
     public boolean activateCartridge(Player player) {
         ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
         if (!(chestplate.getItem() instanceof IdofrontArmorItem)) return false;
 
-        if (ModSounds.CARTRIDGE_ACTIVATE != null) {
-            player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
-                    ModSounds.CARTRIDGE_ACTIVATE, SoundSource.PLAYERS, 5.0f, 1.0f);
-        } else {
-            System.out.println("[DEBUG] Cartridge sound event is NULL!");
+        // ✅ Close GUI BEFORE consuming cartridge
+        if (player instanceof ServerPlayer serverPlayer) {
+            serverPlayer.closeContainer();
         }
-
-
-
-
 
         for (int i = 0; i < 3; i++) {
             ItemStack cartridge = getCartridge(chestplate, i);
             if (!cartridge.isEmpty()) {
+                // 🔥 Remove the cartridge BEFORE applying effects
+                setCartridge(chestplate, i, ItemStack.EMPTY);
+                chestplate.setTag(chestplate.getOrCreateTag()); // Force inventory sync
+                player.getInventory().setChanged(); // Ensure inventory updates
+
+                // ✅ Play Sound
+                if (ModSounds.CARTRIDGE_ACTIVATE != null) {
+                    player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
+                            ModSounds.CARTRIDGE_ACTIVATE, SoundSource.PLAYERS, 5.0f, 1.0f);
+                }
+
+                // ✅ Apply effects AFTER closing GUI
                 player.setHealth(2.0F);
                 player.removeAllEffects();
-
                 player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 2));
                 player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 1));
                 player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0));
-
 
                 if (player instanceof IPlayerCartridgeData playerData) {
                     playerData.setCartridgeImmunity(player.level().getGameTime() + (30 * 20));
                 }
 
-
-
-
-
-                setCartridge(chestplate, i, ItemStack.EMPTY);
-                return true;
+                // ✅ STOP the loop after using **one** cartridge
+                break;
             }
         }
-        return false;
+        return true;
     }
+
 
 
     @Override

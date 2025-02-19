@@ -1,4 +1,4 @@
-// 1.20.1	2025-02-14T16:19:27.285681	Proto GMT/Model Definitions
+// 1.20.1	2025-02-18T19:32:27.2864474	Proto GMT/Model Definitions
 ee6774941dc13b033dea03bc5befa927b72e4604 assets\protogmt\models\item\idofront_leggings.json
 a05fa76512d5184fee15d18b33e47dc4d80a5d37 assets\protogmt\models\item\the_key.json
 368e04d9e12a8239bb3d65c30bc561b9ae1a3cdb assets\protogmt\models\item\alley_soul.json
@@ -11,7 +11,6 @@ c6f2b00cff06531065ed262d807167ecd08c58a8 assets\protogmt\models\item\mithril_pur
 6f017eca38e9746a022d1c3c738f7b83d00f9124 assets\protogmt\models\block\mithril_impure_block.json
 a228d4acd7d5b554f0c41c4b9f7f2c1597fc4d09 assets\protogmt\models\item\mithril_pure_block.json
 cb04689b7608a9316825869808e26e9f46447421 assets\protogmt\models\item\mithril_pure_stairs.json
-939a0c4bbc36e3bf947060729af49eb4e0ef098c assets\protogmt\models\item\netherite_ether_upgraded_chestplate.json
 9cad6e3f5285d79c1ea56981d257307012d2bae8 assets\protogmt\blockstates\mithril_pure_button.json
 e81dfee225ff6efa08072019209eb489cf283139 assets\protogmt\models\block\mithril_pure_button.json
 48a9c12c70917254874083927eb6291bb6ba29b5 assets\protogmt\models\item\chesium_shovel.json
@@ -20,12 +19,13 @@ fd7ac60f0a5694c3270f4fa7d8203fdb2933bfd5 assets\protogmt\models\block\mithril_de
 8fa1d4e2c5d81b412f1c140552953f6fe1c94999 assets\protogmt\models\item\netherite_ether_upgraded_helmet.json
 17a597b2cd8b33c7ba896a61614da4962a626da0 assets\protogmt\models\item\raw_mithril.json
 cc91e6508e3a44100c2ed264adfa19f35ff8c4b1 assets\protogmt\models\block\mithril_ore.json
-8159cb22d47b00f6293558ce9784356d01bec878 assets\protogmt\models\item\mithril_ore.json
 849ecea5cda992f444edbd14aef5742469851113 assets\protogmt\blockstates\mithril_impure_stairs.json
+8159cb22d47b00f6293558ce9784356d01bec878 assets\protogmt\models\item\mithril_ore.json
 0123f88b1de3c606eb247eaa8985608b92f1fb46 assets\protogmt\models\block\mithril_pure_block.json
 ee72259966e7b596fe6c76b26519e2b9d9e4514b assets\protogmt\blockstates\mithril_deepslate_ore.json
 d82fb4171c5520841dc981e28c42cca30595b7e6 assets\protogmt\models\item\idofront_mask.json
 2befe6598fd4623efc5a88518d5b6f91f2026946 assets\protogmt\models\item\chesium_pickaxe.json
+6b09bcd686dd0445415ff946a89fddfd063be7cc assets\protogmt\models\item\idofront_template.json
 d03da4c4131da9a8d14dc62c9646d196fec90fe6 assets\protogmt\models\item\mithril_impure_wall.json
 d6a65ef8c786d60251c7d95ae5a2d8797f508ddb assets\protogmt\models\block\mithril_pure_button_inventory.json
 bfc35acf596be3e15275f5dee9271c6269a51b34 assets\protogmt\models\block\mithril_pure_pressure_plate.json
@@ -39,8 +39,8 @@ a66ca5bd3d6c4d65a1e16dd0225a4372cfc5bbe3 assets\protogmt\models\item\vex_core.js
 27cdc168ea65027b408b567685dbdb9149aa3605 assets\protogmt\models\item\mithril_hoe.json
 8afce935f72c7702d67b6a243533c4a5fc87f819 assets\protogmt\models\item\cartridge.json
 d7db5991a59559dc6d36b950a41a8ac90f650fad assets\protogmt\models\block\mithril_pure_slab.json
-aa115e556e911e75f0d2dd3a9bc9379a6dfd43d5 assets\protogmt\blockstates\mithril_impure_wall.json
 03cb90344d368ccd10b918c309934dac484dd6f3 assets\protogmt\blockstates\mithril_pure_slab.json
+aa115e556e911e75f0d2dd3a9bc9379a6dfd43d5 assets\protogmt\blockstates\mithril_impure_wall.json
 2bb96bdb4611bb5e94465fabff23d6bea034e752 assets\protogmt\models\item\idofront.json
 68d96199c63eb6a0453a9387ff8fd066fb7f5e51 assets\protogmt\models\block\mithril_pure_wall_side.json
 20c20daea6d2b746bdf09cf988819f369bd4c0fe assets\protogmt\models\item\mithril_impure_slab.json

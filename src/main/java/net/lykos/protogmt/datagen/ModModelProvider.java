@@ -42,6 +42,7 @@ public class ModModelProvider extends FabricModelProvider {
         gen.generateFlatItem(ModItems.MITHRIL_INGOT, ModelTemplates.FLAT_ITEM);
         gen.generateFlatItem(ModItems.ETHER, ModelTemplates.FLAT_ITEM);
         gen.generateFlatItem(ModItems.IDOFRONT, ModelTemplates.FLAT_ITEM);
+        gen.generateFlatItem(ModItems.IDOFRONT_TEMPLATE, ModelTemplates.FLAT_ITEM);
         gen.generateFlatItem(ModItems.CORRUPTED_WARDEN_HEART, ModelTemplates.FLAT_ITEM);
         gen.generateFlatItem(ModItems.PURIFIED_WARDEN_HEART, ModelTemplates.FLAT_ITEM);
         gen.generateFlatItem(ModItems.CARTRIDGE, ModelTemplates.FLAT_ITEM);
