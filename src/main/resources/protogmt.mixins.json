@@ -6,7 +6,7 @@
   "mixins": [
     "PlayerMixin",
     "PlayerJoinMixin",
-    "ItemEntityMixin"
+    "PlayerTickMixin"
   ],
   "injectors": {
     "defaultRequire": 1

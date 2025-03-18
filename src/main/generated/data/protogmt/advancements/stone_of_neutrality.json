@@ -1,0 +1,39 @@
+{
+  "parent": "protogmt:protogmt",
+  "criteria": {
+    "has_mithril_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:idofront"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "protogmt:textures/block/mithril_pure_block.png",
+    "description": {
+      "text": "Finally ! I can build without being bullied by blood hungry maniac !"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "item": "protogmt:idofront"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Yay ! Finally immortal !"
+    }
+  },
+  "requirements": [
+    [
+      "has_mithril_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,39 @@
+{
+  "parent": "protogmt:soulless",
+  "criteria": {
+    "has_mithril_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:pact_of_nyx"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "protogmt:textures/block/pact_of_nyx.png",
+    "description": {
+      "text": "The night shall fall for all of us, the fate of all mortal is to fall to dust. You sold your soul to Azraël for Nyx's blessing. Was it worth it ?"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "item": "protogmt:pact_of_nyx"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Good night~"
+    }
+  },
+  "requirements": [
+    [
+      "has_mithril_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

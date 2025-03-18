@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "minecraft:ender_eye"
+    },
+    "G": {
+      "item": "minecraft:gold_block"
+    },
+    "N": {
+      "item": "minecraft:amethyst_block"
+    }
+  },
+  "pattern": [
+    "GNG",
+    "NEN",
+    "GNG"
+  ],
+  "result": {
+    "item": "protogmt:rune_breaker"
+  },
+  "show_notification": true
+}

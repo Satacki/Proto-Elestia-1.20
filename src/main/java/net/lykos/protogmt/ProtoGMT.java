@@ -16,7 +16,7 @@ import net.lykos.protogmt.network.OpenCartridgeGuiPacket;
 import net.lykos.protogmt.registry.*;
 import net.lykos.protogmt.loot.ModLootTableModifiers;
 import net.lykos.protogmt.sound.ModSounds;
-import net.lykos.protogmt.util.ModEntityData;
+import net.lykos.protogmt.handlers.RuneBreakerTickHandler;
 import net.lykos.protogmt.util.ModRegistries;
 import net.lykos.protogmt.util.UUIDConfig;
 import net.minecraft.resources.ResourceLocation;
@@ -50,6 +50,7 @@ public class ProtoGMT implements ModInitializer {
         ModLootTableModifiers.register();
         RespawnHandler.register();
         ModRecipes.register();
+        RuneBreakerTickHandler.registerTickHandler();
 
         OpenCartridgeGuiPacket.register();
         NegativeEffectBlocker.register();

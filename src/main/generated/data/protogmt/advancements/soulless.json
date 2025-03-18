@@ -1,0 +1,39 @@
+{
+  "parent": "protogmt:protogmt",
+  "criteria": {
+    "has_mithril_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "protogmt:pact_of_nyx"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "protogmt:textures/block/mithril_pure_block.png",
+    "description": {
+      "text": "You sold what is considered your soul to Azraël, there is no going back now... Warlock."
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "item": "protogmt:soulless"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Without Freewill"
+    }
+  },
+  "requirements": [
+    [
+      "has_mithril_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
