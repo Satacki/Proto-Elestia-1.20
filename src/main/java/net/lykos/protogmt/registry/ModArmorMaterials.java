@@ -23,10 +23,10 @@ public enum ModArmorMaterials implements ArmorMaterial, StringRepresentable {
 
     IDOFRONT("idofront", 50, Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
         map.put(ArmorItem.Type.BOOTS, 3);
-        map.put(ArmorItem.Type.LEGGINGS, 8);
+        map.put(ArmorItem.Type.LEGGINGS, 6);
         map.put(ArmorItem.Type.CHESTPLATE, 8);
         map.put(ArmorItem.Type.HELMET, 3);
-    }), 50, SoundEvents.ARMOR_EQUIP_LEATHER, 4.0f, 0.5f, () -> Ingredient.of(ModItems.IDOFRONT));
+    }), 50, SoundEvents.ARMOR_EQUIP_LEATHER, 3.0f, 0.0f, () -> Ingredient.of(ModItems.IDOFRONT));
 
     public static final StringRepresentable.EnumCodec<ModArmorMaterials> CODEC;
     private static final EnumMap<ArmorItem.Type, Integer> BASE_DURABILITY;

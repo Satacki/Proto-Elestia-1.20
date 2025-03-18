@@ -3,21 +3,38 @@ package net.lykos.protogmt.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.lykos.protogmt.ProtoGMT;
+import net.lykos.protogmt.crafting.HiddenRecipeRegistry;
 import net.lykos.protogmt.registry.ModBlocks;
 import net.lykos.protogmt.registry.ModItems;
 import net.minecraft.data.recipes.*;
+import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import mezz.jei.api.constants.Tags;
+
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Recipe;
 
 import java.util.function.Consumer;
+
 
 public class ModRecipeGenerator extends FabricRecipeProvider {
     public ModRecipeGenerator(FabricDataOutput output) {
         super(output);
     }
+    public static void injectKeepFunction(FinishedRecipe recipe, Consumer<FinishedRecipe> exporter) {
+        ResourceLocation recipeId = recipe.getId();
+        System.out.println("[DEBUG] Modifying recipe: " + recipeId);
+
+
+    }
+
 
     @Override
     public void buildRecipes(Consumer<FinishedRecipe> exporter) {
+
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItems.HOLY_CHEESE)
                 .pattern("SSS")
                 .pattern("SPS")
@@ -43,6 +60,20 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .unlockedBy(getHasName(ModItems.ETHER), has(ModItems.ETHER))
                 .save(exporter, getConversionRecipeName(ModItems.ETHER, ModItems.ETHER_TRIM_UPGRADE));
 
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RUNE_BREAKER)
+                .pattern("GNG")
+                .pattern("NEN")
+                .pattern("GNG")
+                .define('G', Items.GOLD_BLOCK)
+                .define('N', Items.AMETHYST_BLOCK)
+                .define('E', Items.ENDER_EYE)
+                .unlockedBy(getHasName(ModBlocks.MITHRIL_PURE_BLOCK), has(ModBlocks.MITHRIL_PURE_BLOCK))
+                .unlockedBy(getHasName(ModItems.ETHER), has(ModItems.ETHER))
+                .save(exporter, getConversionRecipeName(ModItems.RUNE_BREAKER, ModItems.RUNE_BREAKER));
+
+
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MITHRIL_TOOL_UPGRADE)
                 .pattern("SUS")
                 .pattern("SPS")
@@ -61,6 +92,25 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                         getConversionRecipeName(
                                 Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE,
                                 ModItems.MITHRIL_TOOL_UPGRADE
+                        )
+                );
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CARTRIDGE)
+                .pattern("IBI")
+                .pattern("THT")
+                .pattern("III")
+                .define('I', Items.IRON_INGOT)
+                .define('T', ModItemTagProvider.BANNERS)
+                .define('H', Items.PLAYER_HEAD)
+                .define('B', Items.POLISHED_BLACKSTONE_BUTTON)
+                .unlockedBy(
+                        getHasName(Items.PLAYER_HEAD),
+                        has(Items.PLAYER_HEAD)
+                )
+                .save(
+                        exporter,
+                        getConversionRecipeName(
+                                Items.PLAYER_HEAD,
+                                ModItems.CARTRIDGE
                         )
                 );
 
@@ -83,21 +133,21 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .unlockedBy(getHasName(ModBlocks.MITHRIL_PURE_BLOCK), has(ModBlocks.MITHRIL_PURE_BLOCK))
                 .save(exporter, getConversionRecipeName(ModItems.PURIFIED_WARDEN_HEART, ModItems.ETHER));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CARTRIDGE)
-                .pattern("IEI")
-                .pattern("BHB")
-                .pattern("III")
-                .define('I', Items.IRON_INGOT)
-                .define('E', Items.POLISHED_BLACKSTONE_BUTTON)
-                .define('B', ModItemTagProvider.BANNERS) // Use the generated banner tag
-                .define('H', Items.PLAYER_HEAD)
-                .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
-                .unlockedBy(getHasName(Items.POLISHED_BLACKSTONE_BUTTON), has(Items.POLISHED_BLACKSTONE_BUTTON))
-                .unlockedBy(getHasName(Items.PLAYER_HEAD), has(Items.PLAYER_HEAD))
-                .save(exporter, getConversionRecipeName(ModItems.CARTRIDGE, ModItems.IDOFRONT));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.IDOFRONT_TEMPLATE)
+                .pattern("CTC")
+                .pattern("CDC")
+                .pattern("CCC")
+                .define('C', Items.CRYING_OBSIDIAN)
+                .define('T', Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .unlockedBy(getHasName(Items.CRYING_OBSIDIAN), has(Items.CRYING_OBSIDIAN))
+                .unlockedBy(getHasName(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), has(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
+                .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND))
+                .save(exporter, getConversionRecipeName(ModItems.IDOFRONT_TEMPLATE, ModItems.IDOFRONT_TEMPLATE));
 
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.THE_KEY)
+                .group("dragon_egg_crafting") // ✅ Ensures recipe is assigned to the correct type
                 .pattern("VEA")
                 .pattern("HDN")
                 .pattern("SYR")
@@ -105,7 +155,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .define('V', ModItems.VEX_SOUL)
                 .define('H', ModItems.PURIFIED_WARDEN_HEART)
                 .define('A', ModItems.ALLEY_SOUL)
-                .define('D', Items.DRAGON_EGG)
+                .define('D', Items.DRAGON_EGG) // ✅ Dragon Egg is required but should not be consumed
                 .define('S', Items.ECHO_SHARD)
                 .define('N', Items.NETHER_STAR)
                 .define('Y', Items.ENDER_EYE)
@@ -119,7 +169,9 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .unlockedBy(getHasName(Items.NETHER_STAR), has(Items.NETHER_STAR))
                 .unlockedBy(getHasName(Items.ENDER_EYE), has(Items.ENDER_EYE))
                 .unlockedBy(getHasName(Items.WITHER_ROSE), has(Items.WITHER_ROSE))
-                .save(exporter, getConversionRecipeName(ModItems.THE_KEY, ModItems.ETHER));
+                .save((finishedRecipe) -> {
+                    injectKeepFunction(finishedRecipe, exporter); // ✅ Corrected: Now it correctly exports the modified recipe
+                }, getConversionRecipeName(ModItems.THE_KEY, ModItems.ETHER));
 
         nineBlockStorageRecipes(
                 exporter,
@@ -372,60 +424,58 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                         RecipeCategory.MISC,
                         ModItems.IDOFRONT
                 )
-                .unlocks(getHasName(ModItems.MITHRIL_TOOL_UPGRADE), has(ModItems.MITHRIL_TOOL_UPGRADE))
+                .unlocks(getHasName(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), has(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
                 .unlocks(getHasName(Items.NETHERITE_INGOT), has(Items.NETHERITE_INGOT))
                 .unlocks(getHasName(Items.CRYING_OBSIDIAN), has(Items.CRYING_OBSIDIAN))
                 .save(exporter, ProtoGMT.id("idofront_alloy"));
 
         SmithingTransformRecipeBuilder.smithing(
-                        Ingredient.of(ModItems.MITHRIL_TOOL_UPGRADE),
+                        Ingredient.of(ModItems.IDOFRONT_TEMPLATE),
                         Ingredient.of(Items.NETHERITE_HELMET),
                         Ingredient.of(ModItems.IDOFRONT),
                         RecipeCategory.MISC,
                         ModItems.IDOFRONT_MASK
                 )
-                .unlocks(getHasName(ModItems.MITHRIL_TOOL_UPGRADE), has(ModItems.MITHRIL_TOOL_UPGRADE))
+                .unlocks(getHasName(ModItems.IDOFRONT_TEMPLATE), has(ModItems.IDOFRONT_TEMPLATE))
                 .unlocks(getHasName(ModItems.IDOFRONT), has(ModItems.IDOFRONT))
                 .unlocks(getHasName(Items.NETHERITE_HELMET), has(Items.NETHERITE_HELMET))
                 .save(exporter, ProtoGMT.id("idofront_mask"));
 
         SmithingTransformRecipeBuilder.smithing(
-                        Ingredient.of(ModItems.MITHRIL_TOOL_UPGRADE),
+                        Ingredient.of(ModItems.IDOFRONT_TEMPLATE),
                         Ingredient.of(Items.NETHERITE_CHESTPLATE),
                         Ingredient.of(ModItems.IDOFRONT),
                         RecipeCategory.MISC,
                         ModItems.IDOFRONT_CHESTPLATE
                 )
-                .unlocks(getHasName(ModItems.MITHRIL_TOOL_UPGRADE), has(ModItems.MITHRIL_TOOL_UPGRADE))
+                .unlocks(getHasName(ModItems.IDOFRONT_TEMPLATE), has(ModItems.IDOFRONT_TEMPLATE))
                 .unlocks(getHasName(ModItems.IDOFRONT), has(ModItems.IDOFRONT))
                 .unlocks(getHasName(Items.NETHERITE_CHESTPLATE), has(Items.NETHERITE_CHESTPLATE))
                 .save(exporter, ProtoGMT.id("idofront_chestplate"));
 
         SmithingTransformRecipeBuilder.smithing(
-                        Ingredient.of(ModItems.MITHRIL_TOOL_UPGRADE),
+                        Ingredient.of(ModItems.IDOFRONT_TEMPLATE),
                         Ingredient.of(Items.NETHERITE_LEGGINGS),
                         Ingredient.of(ModItems.IDOFRONT),
                         RecipeCategory.MISC,
                         ModItems.IDOFRONT_LEGGINGS
                 )
-                .unlocks(getHasName(ModItems.MITHRIL_TOOL_UPGRADE), has(ModItems.MITHRIL_TOOL_UPGRADE))
+                .unlocks(getHasName(ModItems.IDOFRONT_TEMPLATE), has(ModItems.IDOFRONT_TEMPLATE))
                 .unlocks(getHasName(ModItems.IDOFRONT), has(ModItems.IDOFRONT))
                 .unlocks(getHasName(Items.NETHERITE_LEGGINGS), has(Items.NETHERITE_LEGGINGS))
                 .save(exporter, ProtoGMT.id("idofront_leggings"));
 
         SmithingTransformRecipeBuilder.smithing(
-                        Ingredient.of(ModItems.MITHRIL_TOOL_UPGRADE),
+                        Ingredient.of(ModItems.IDOFRONT_TEMPLATE),
                         Ingredient.of(Items.NETHERITE_BOOTS),
                         Ingredient.of(ModItems.IDOFRONT),
                         RecipeCategory.MISC,
                         ModItems.IDOFRONT_BOOTS
                 )
-                .unlocks(getHasName(ModItems.MITHRIL_TOOL_UPGRADE), has(ModItems.MITHRIL_TOOL_UPGRADE))
+                .unlocks(getHasName(ModItems.IDOFRONT_TEMPLATE), has(ModItems.IDOFRONT_TEMPLATE))
                 .unlocks(getHasName(ModItems.IDOFRONT), has(ModItems.IDOFRONT))
                 .unlocks(getHasName(Items.NETHERITE_BOOTS), has(Items.NETHERITE_BOOTS))
                 .save(exporter, ProtoGMT.id("idofront_boots"));
-
-
 
     }
 }

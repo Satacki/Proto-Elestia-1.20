@@ -12,18 +12,31 @@ public class CartridgeTotemHandler {
     public static void register() {
         ServerLivingEntityEvents.ALLOW_DEATH.register((LivingEntity entity, DamageSource source, float amount) -> {
             if (!(entity instanceof ServerPlayer player)) {
-                return true; // Allow non-players to die normally
+                return true; // Allow normal death for non-players
             }
 
             ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
             if (chestplate.getItem() instanceof IdofrontArmorItem armorItem) {
+
+                // ✅ Check if the armor has any cartridges left
+                if (!armorItem.hasCartridge(chestplate)) {
+                    System.out.println("[DEBUG] No cartridges left. Allowing death.");
+                    return true; // Allow normal death
+                }
+
+                // ✅ Cartridge is available, activate it
                 if (armorItem.activateCartridge(player)) {
-                    // Force inventory sync before death
+                    System.out.println("[DEBUG] Cartridge used, preventing death.");
+                    player.setHealth(2.0F); // Prevent limbo state
+                    player.clearFire();
+                    player.setRemainingFireTicks(0);
+                    player.getCombatTracker().recheckStatus();
                     player.inventoryMenu.broadcastChanges();
                     return false; // Prevent death
                 }
             }
-            return true; // Allow normal death
+
+            return true; // Default: allow normal death
         });
     }
 }

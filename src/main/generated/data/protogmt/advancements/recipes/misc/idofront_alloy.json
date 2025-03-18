@@ -13,24 +13,24 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_mithril_tool_upgrade": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "protogmt:mithril_tool_upgrade"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_netherite_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
               "minecraft:netherite_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_upgrade_smithing_template": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:netherite_upgrade_smithing_template"
             ]
           }
         ]
@@ -46,7 +46,7 @@
   },
   "requirements": [
     [
-      "has_mithril_tool_upgrade",
+      "has_netherite_upgrade_smithing_template",
       "has_netherite_ingot",
       "has_crying_obsidian",
       "has_the_recipe"

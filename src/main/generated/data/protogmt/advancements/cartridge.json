@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "protogmt:idofront"
+              "protogmt:cartridge"
             ]
           }
         ]
@@ -16,7 +16,7 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "protogmt:textures/block/cartridge.png",
+    "background": "protogmt:textures/block/mithril_pure_block.png",
     "description": {
       "text": "Create a Cartridge to disable negative effect linked to the blood"
     },

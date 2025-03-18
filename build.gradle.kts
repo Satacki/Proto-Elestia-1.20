@@ -14,7 +14,12 @@ repositories {
     maven("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
     maven("https://maven.parchmentmc.org")
     maven("https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1")
-}
+    maven("https://dvs1.progwml6.com/files/maven/")
+    maven("https://maven.blamejared.com/")
+    maven("https://modmaven.dev")
+    maven("https://maven.firstdarkdev.xyz/snapshots") // LDLib, Photon
+    }
+
 
 fabricApi {
     configureDataGeneration()
@@ -33,10 +38,26 @@ dependencies {
     modImplementation("net.fabricmc.fabric-api:fabric-api:${"fabric_api_version"()}")
     modImplementation("software.bernie.geckolib:geckolib-fabric-${"minecraft_version"()}:${"geckolib_version"()}")
 
+
+
     implementation("com.eliotlash.mclib:mclib:20")
 
     // This is dev only, just logs you in when you `runClient`.
     modRuntimeOnly("me.djtheredstoner:DevAuth-fabric:${"devauth_version"()}")
+
+    modCompileOnlyApi("mezz.jei:jei-${"minecraft_version"()}-common-api:${"jei_version"()}")
+    modCompileOnlyApi("mezz.jei:jei-${"minecraft_version"()}-fabric-api:${"jei_version"()}")
+    modRuntimeOnly("mezz.jei:jei-${"minecraft_version"()}-fabric:${"jei_version"()}")
+
+    modImplementation("com.lowdragmc.photon:photon-fabric-1.20.1:${"photon_version"()}") {
+        exclude(group = "maven.modrinth", module = "sodium")
+    }
+    modImplementation("com.lowdragmc.ldlib:ldlib-fabric-1.20.1:1.0.37") {
+        exclude(group = "maven.modrinth", module = "sodium")
+        exclude(group = "dev.latvian.mods", module = "kubejs-fabric")
+    }
+
+
 }
 
 tasks.processResources {

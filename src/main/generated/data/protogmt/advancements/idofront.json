@@ -16,7 +16,7 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "protogmt:textures/block/idofront.png",
+    "background": "protogmt:textures/block/mithril_pure_block.png",
     "description": {
       "text": "Subarashi."
     },

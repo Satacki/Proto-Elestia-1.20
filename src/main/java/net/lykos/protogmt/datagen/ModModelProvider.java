@@ -38,6 +38,11 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerators gen) {
         gen.generateFlatItem(ModItems.MITHRIL_RAW, ModelTemplates.FLAT_ITEM);
+        gen.generateFlatItem(ModItems.SOULLESS, ModelTemplates.FLAT_ITEM);
+        gen.generateFlatItem(ModItems.RUNE_BREAKER, ModelTemplates.FLAT_ITEM);
+        gen.generateFlatItem(ModItems.PACT_OF_NYX, ModelTemplates.FLAT_ITEM);
+        gen.generateFlatItem(ModItems.STONE_OF_NEUTRALITY, ModelTemplates.FLAT_ITEM);
+        gen.generateFlatItem(ModItems.ENTROPY_REWINDER, ModelTemplates.FLAT_ITEM);
         gen.generateFlatItem(ModItems.ETHER_SCANNER, ModelTemplates.FLAT_ITEM);
         gen.generateFlatItem(ModItems.MITHRIL_INGOT, ModelTemplates.FLAT_ITEM);
         gen.generateFlatItem(ModItems.ETHER, ModelTemplates.FLAT_ITEM);

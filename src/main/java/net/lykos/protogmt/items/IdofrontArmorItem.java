@@ -49,12 +49,10 @@ public class IdofrontArmorItem extends ArmorItem implements GeoItem {
 
     public void setCartridge(ItemStack chestplate, int slot, ItemStack cartridge) {
         CompoundTag tag = chestplate.getOrCreateTag();
-
-        // Store cartridge in the correct slot
-        ListTag cartridges = tag.getList("Cartridges", 10); // Type 10 = CompoundTag
-        CompoundTag cartridgeTag = new CompoundTag();
+        ListTag cartridges = tag.getList("Cartridges", 10);
 
         if (!cartridge.isEmpty()) {
+            CompoundTag cartridgeTag = new CompoundTag();
             cartridge.save(cartridgeTag);
             if (cartridges.size() <= slot) {
                 cartridges.add(cartridgeTag);
@@ -68,7 +66,12 @@ public class IdofrontArmorItem extends ArmorItem implements GeoItem {
         }
 
         tag.put("Cartridges", cartridges);
+        chestplate.setTag(tag); // ✅ Force update
+
+        updateCartridgeState(chestplate); // ✅ Ensure the "HasCartridge" NBT updates correctly
     }
+
+
 
 
     public ItemStack getCartridge(ItemStack chestplate, int slot) {
@@ -92,13 +95,18 @@ public class IdofrontArmorItem extends ArmorItem implements GeoItem {
         }
         return false;
     }
-    
+
 
     public boolean activateCartridge(Player player) {
         ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
         if (!(chestplate.getItem() instanceof IdofrontArmorItem)) return false;
 
-        // ✅ Close GUI BEFORE consuming cartridge
+        if (!hasCartridge(chestplate)) {
+            System.out.println("[DEBUG] No cartridges left. Cannot activate.");
+            return false; // 🚨 Prevent activation when no cartridges exist!
+        }
+
+        // Close GUI BEFORE consuming cartridge
         if (player instanceof ServerPlayer serverPlayer) {
             serverPlayer.closeContainer();
         }
@@ -106,21 +114,25 @@ public class IdofrontArmorItem extends ArmorItem implements GeoItem {
         for (int i = 0; i < 3; i++) {
             ItemStack cartridge = getCartridge(chestplate, i);
             if (!cartridge.isEmpty()) {
-                // 🔥 Remove the cartridge BEFORE applying effects
+                System.out.println("[DEBUG] Using Cartridge in Slot: " + i);
+
                 setCartridge(chestplate, i, ItemStack.EMPTY);
                 chestplate.setTag(chestplate.getOrCreateTag()); // Force inventory sync
                 player.getInventory().setChanged(); // Ensure inventory updates
 
-                // ✅ Play Sound
-                if (ModSounds.CARTRIDGE_ACTIVATE != null) {
-                    player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
-                            ModSounds.CARTRIDGE_ACTIVATE, SoundSource.PLAYERS, 5.0f, 1.0f);
+                if (player instanceof ServerPlayer serverPlayer) {
+                    serverPlayer.inventoryMenu.broadcastChanges();
                 }
 
-                // ✅ Apply effects AFTER closing GUI
+                // Fix sound playing for all players
+                player.level().playSound(player, player.getX(), player.getY(), player.getZ(),
+                        ModSounds.CARTRIDGE_ACTIVATE, SoundSource.PLAYERS, 1.0f, 1.0f);
+
+                // Apply Effects
                 player.setHealth(2.0F);
                 player.removeAllEffects();
-                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 2));
+                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 900, 1));
                 player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 1));
                 player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0));
 
@@ -128,14 +140,21 @@ public class IdofrontArmorItem extends ArmorItem implements GeoItem {
                     playerData.setCartridgeImmunity(player.level().getGameTime() + (30 * 20));
                 }
 
-                // ✅ STOP the loop after using **one** cartridge
-                break;
+                updateCartridgeState(chestplate); // ✅ Update NBT to reflect cartridge usage
+
+                return true; // Stop here, we used a cartridge
             }
         }
-        return true;
+
+        return false; // No cartridges found!
     }
 
 
+    public void updateCartridgeState(ItemStack chestplate) {
+        CompoundTag tag = chestplate.getOrCreateTag();
+        boolean hasCartridges = hasCartridge(chestplate); // Check if at least 1 cartridge exists
+        tag.putBoolean("HasCartridge", hasCartridges); // ✅ Store in NBT
+    }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
@@ -144,7 +163,7 @@ public class IdofrontArmorItem extends ArmorItem implements GeoItem {
         if (slot == EquipmentSlot.CHEST) { // ✅ Apply only to the chestplate
             modifiers.put(Attributes.MOVEMENT_SPEED,
                     new AttributeModifier(UUID.fromString("123e4567-e89b-12d3-a456-426614174000"),
-                            "Armor Speed Reduction", -0.1, AttributeModifier.Operation.MULTIPLY_TOTAL)); // ✅ Reduce speed by 10%
+                            "Armor Speed Reduction", -0.0, AttributeModifier.Operation.MULTIPLY_TOTAL)); // ✅ Reduce speed by 10%
         }
 
         return modifiers;

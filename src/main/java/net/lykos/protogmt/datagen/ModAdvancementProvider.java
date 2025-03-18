@@ -66,7 +66,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         new ItemStack(ModItems.IDOFRONT),
                         Component.literal("素晴らしい."),
                         Component.literal("Subarashi."),
-                        ProtoGMT.id("textures/block/idofront.png"),
+                        ProtoGMT.id("textures/block/mithril_pure_block.png"),
                         FrameType.CHALLENGE,
                         true,
                         true,
@@ -79,13 +79,13 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                 .parent(rootAdvancement)
                 .save(consumer, ProtoGMT.MOD_ID + ":idofront");
 
-        Advancement cartridgeAdvancement = Advancement.Builder.advancement()
+        Advancement neutralitystoneAdvancement = Advancement.Builder.advancement()
                 .display(new DisplayInfo(
-                        new ItemStack(ModItems.CARTRIDGE),
-                        Component.literal("It is a matter of love !"),
-                        Component.literal("Create a Cartridge to disable negative effect linked to the blood"),
-                        ProtoGMT.id("textures/block/cartridge.png"),
-                        FrameType.GOAL,
+                        new ItemStack(ModItems.IDOFRONT),
+                        Component.literal("Yay ! Finally immortal !"),
+                        Component.literal("Finally ! I can build without being bullied by blood hungry maniac !"),
+                        ProtoGMT.id("textures/block/mithril_pure_block.png"),
+                        FrameType.CHALLENGE,
                         true,
                         true,
                         true
@@ -94,8 +94,66 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         "has_mithril_ingot",
                         InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.IDOFRONT)
                 )
+                .parent(rootAdvancement)
+                .save(consumer, ProtoGMT.MOD_ID + ":stone_of_neutrality");
+
+        Advancement cartridgeAdvancement = Advancement.Builder.advancement()
+                .display(new DisplayInfo(
+                        new ItemStack(ModItems.CARTRIDGE),
+                        Component.literal("It is a matter of love !"),
+                        Component.literal("Create a Cartridge to disable negative effect linked to the blood"),
+                        ProtoGMT.id("textures/block/mithril_pure_block.png"),
+                        FrameType.GOAL,
+                        true,
+                        true,
+                        true
+                ))
+                .addCriterion(
+                        "has_mithril_ingot",
+                        InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.CARTRIDGE)
+                )
                 .parent(idofrontAdvancement)
                 .save(consumer, ProtoGMT.MOD_ID + ":cartridge");
+
+
+        Advancement soulsoldAdvancement = Advancement.Builder.advancement()
+                .display(new DisplayInfo(
+                        new ItemStack(ModItems.SOULLESS),
+                        Component.literal("Without Freewill"),
+                        Component.literal("You sold what is considered your soul to Azraël, there is no going back now... Warlock."),
+                        ProtoGMT.id("textures/block/mithril_pure_block.png"),
+                        FrameType.GOAL,
+                        true,
+                        true,
+                        true
+                ))
+                .addCriterion(
+                        "has_mithril_ingot",
+                        InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.PACT_OF_NYX)
+                )
+                .parent(rootAdvancement)
+                .save(consumer, ProtoGMT.MOD_ID + ":soulless");
+
+
+
+
+        Advancement pactofnyxAdvancement = Advancement.Builder.advancement()
+                .display(new DisplayInfo(
+                        new ItemStack(ModItems.PACT_OF_NYX),
+                        Component.literal("Good night~"),
+                        Component.literal("The night shall fall for all of us, the fate of all mortal is to fall to dust. You sold your soul to Azraël for Nyx's blessing. Was it worth it ?"),
+                        ProtoGMT.id("textures/block/pact_of_nyx.png"),
+                        FrameType.GOAL,
+                        true,
+                        true,
+                        true
+                ))
+                .addCriterion(
+                        "has_mithril_ingot",
+                        InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.PACT_OF_NYX)
+                )
+                .parent(soulsoldAdvancement)
+                .save(consumer, ProtoGMT.MOD_ID + ":pactofnyx");
 
 
         Advancement scanAdvancement = Advancement.Builder.advancement()

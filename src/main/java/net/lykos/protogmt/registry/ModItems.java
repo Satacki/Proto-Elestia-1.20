@@ -56,6 +56,19 @@ public class ModItems {
             new Item(new FabricItemSettings().rarity(Rarity.RARE).recipeRemainder(ALLEY_SOUL).maxCount(1))
     );
 
+    public static final Item SOULLESS = registerItem(
+            "soulless",
+            new Item(new FabricItemSettings().rarity(Rarity.RARE))
+    );
+    public static final Item STONE_OF_NEUTRALITY = registerItem(
+            "stone_of_neutrality",
+            new StoneOfNeutralityItem(new FabricItemSettings().rarity(Rarity.RARE))
+    );
+    public static final Item ENTROPY_REWINDER = registerItem(
+            "entropy_rewinder",
+            new EntropyRewinderItem(new FabricItemSettings().rarity(Rarity.RARE))
+    );
+
     public static final Item ETHER_SCANNER = registerItem(
             "ether_scanner",
             new EtherScannerItem(new FabricItemSettings().maxDamage(512))
@@ -82,10 +95,22 @@ public class ModItems {
 
 
 
+    public static final Item PACT_OF_NYX = registerItem(
+            "pact_of_nyx",
+            new PactOfEternalNightItem(new FabricItemSettings().rarity(Rarity.EPIC)));
+
+
+
+
 
     public static final Item THE_KEY = registerItem(
             "the_key",
             new TheKey(new FabricItemSettings().rarity(Rarity.EPIC))
+    );
+
+    public static final Item RUNE_BREAKER = registerItem(
+            "rune_breaker",
+            new RuneBreakerItem(new FabricItemSettings().rarity(Rarity.EPIC))
     );
 
     public static final Item ETHER_TRIM_UPGRADE = registerItem(
@@ -99,7 +124,7 @@ public class ModItems {
     );
 
 
-    ///Tools ans stuff part
+    ///Tools and stuff part
 
 
     //Chesium
@@ -265,7 +290,6 @@ public class ModItems {
         entries.accept(MITHRIL_INGOT);
         entries.accept(MITHRIL_RAW);
         entries.accept(ETHER);
-        entries.accept(IDOFRONT);
 
         entries.accept(ModBlocks.MITHRIL_PURE_BLOCK);
         entries.accept(ModBlocks.MITHRIL_IMPURE_BLOCK);

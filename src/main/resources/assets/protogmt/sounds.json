@@ -7,5 +7,14 @@
         "pitch": 1.0
       }
     ]
+  },
+  "pact_activate": {
+    "sounds": ["protogmt:pact_activate"]
+  },
+  "pact_failure": {
+    "sounds": ["protogmt:pact_failure"]
+  },
+  "pact_command": {
+    "sounds": ["protogmt:pact_command"]
   }
 }
